@@ -1,0 +1,8 @@
+{
+  "name": "zanzibar-soap",
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false
+}
