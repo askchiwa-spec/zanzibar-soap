@@ -528,6 +528,26 @@ section{position:relative}
 }
 .btn-wa:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(37,211,102,.45)}
 
+/* ── MAP ── */
+.map-sec{padding:9rem 5rem;background:var(--cream);overflow:hidden}
+.map-inner{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:center}
+.map-details{display:flex;flex-direction:column;gap:1.4rem;margin-top:2rem}
+.map-detail-row{display:flex;align-items:flex-start;gap:1rem}
+.map-icon{font-size:1.3rem;margin-top:.1rem;flex-shrink:0}
+.map-detail-row div{display:flex;flex-direction:column;gap:.25rem}
+.map-detail-row strong{font-size:.75rem;font-weight:600;color:var(--forest);letter-spacing:.06em;text-transform:uppercase}
+.map-detail-row span{font-size:.9rem;color:#666;line-height:1.6}
+.map-detail-row a{color:var(--gold);text-decoration:none;transition:color .3s}
+.map-detail-row a:hover{color:var(--forest)}
+.map-embed{
+  height:480px;border-radius:24px;overflow:hidden;
+  box-shadow:0 24px 70px rgba(27,58,45,.14);
+  border:3px solid rgba(196,136,74,.18);
+}
+.map-embed iframe{width:100%;height:100%;display:block}
+@media(max-width:1100px){.map-inner{grid-template-columns:1fr;gap:3rem}.map-embed{height:360px}}
+@media(max-width:680px){.map-sec{padding:6rem 1.5rem}.map-embed{height:280px}}
+
 /* ── FOOTER ── */
 footer{background:var(--forest-deep);padding:5rem 5rem 2.5rem}
 .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3.5rem}
@@ -616,6 +636,7 @@ footer{background:var(--forest-deep);padding:5rem 5rem 2.5rem}
     <li><a href="#products">Products</a></li>
     <li><a href="#ingredients">Ingredients</a></li>
     <li><a href="#delivery">Delivery</a></li>
+    <li><a href="#map">Find Us</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Shop Now</a>
@@ -1337,6 +1358,48 @@ footer{background:var(--forest-deep);padding:5rem 5rem 2.5rem}
       </a>
       <a href="mailto:zanzibarsoap@gmail.com" class="btn-primary">Send an Email</a>
       <a href="https://instagram.com/zanzibarsoap" class="btn-ghost" target="_blank">@zanzibarsoap</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ MAP ════════════════ -->
+<section class="map-sec" id="map">
+  <div class="map-inner">
+    <div class="map-info reveal">
+      <div class="sec-label">Find Us</div>
+      <h2 class="sec-title">Visit Our<br><em>Workshop</em></h2>
+      <p class="sec-body">Come see where the magic happens. We're located in Temeke, Dar es Salaam — walk-ins welcome during business hours.</p>
+      <div class="map-details">
+        <div class="map-detail-row">
+          <span class="map-icon">📍</span>
+          <div>
+            <strong>Address</strong>
+            <span>Kitomondo Street, Temeke<br>Dar es Salaam, Tanzania</span>
+          </div>
+        </div>
+        <div class="map-detail-row">
+          <span class="map-icon">📞</span>
+          <div>
+            <strong>Phone &amp; WhatsApp</strong>
+            <span><a href="tel:+255798538366">+255 798 538 366</a></span>
+          </div>
+        </div>
+        <div class="map-detail-row">
+          <span class="map-icon">🕐</span>
+          <div>
+            <strong>Hours</strong>
+            <span>Mon – Sat: 8:00 AM – 6:00 PM</span>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Kitomondo+Street+Temeke+Dar+es+Salaam+Tanzania" target="_blank" class="btn-primary" style="display:inline-block;margin-top:1.5rem">Get Directions →</a>
+    </div>
+    <div class="map-embed reveal d2">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.153!2d39.2858!3d-6.8235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4b1e15e77c01%3A0x9a8d7c6e8b3f2a1d!2sKitomondo%20St%2C%20Temeke%2C%20Dar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2stz!4v1700000000000!5m2!1sen!2stz"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Zanzibar Soap Location">
+      </iframe>
     </div>
   </div>
 </section>
