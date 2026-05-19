@@ -1,4 +1,4 @@
-.vercel
+# .vercel  ← keep for deployment link
 .DS_Store
 *.log
 node_modules/
