@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zanzibar Soap Limited | 100% Natural Skincare from Tanzania</title>
+<meta name="description" content="Discover premium natural skincare made in Zanzibar, Tanzania. Shop turmeric soaps, coffee scrubs, shea butter bars, and golden body oils. Chemical-free. Worldwide shipping. Proudly African.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --forest:#1B3A2D;--forest-deep:#0F2218;--forest-mid:#2D5A42;
+  --cream:#F7EDD8;--cream-deep:#EDD9B5;--gold:#C4884A;--gold-light:#E8B06A;
+  --sage:#8FAE8B;--white:#FFFDF8;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:#1a1a1a;overflow-x:hidden;cursor:none}
+
+/* ── CUSTOM CURSOR ── */
+.cur-ring{
+  position:fixed;width:36px;height:36px;border:2px solid var(--gold);
+  border-radius:50%;pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .35s cubic-bezier(.4,0,.2,1),
+             height .35s cubic-bezier(.4,0,.2,1),
+             border-color .35s,opacity .35s;
+  mix-blend-mode:multiply;
+}
+.cur-dot{
+  position:fixed;width:8px;height:8px;background:var(--gold);
+  border-radius:50%;pointer-events:none;z-index:10000;
+  transform:translate(-50%,-50%);transition:transform .1s,background .25s;
+}
+.cur-ring.hov{width:60px;height:60px;border-color:var(--forest);background:rgba(27,58,45,.06)}
+.cur-dot.hov{background:var(--forest);transform:translate(-50%,-50%) scale(1.4)}
+.cur-ring.click{width:28px;height:28px;border-color:var(--gold-light)}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:1.2rem 5rem;display:flex;align-items:center;justify-content:space-between;
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  background:rgba(247,237,216,.85);
+  border-bottom:1px solid rgba(196,136,74,.18);
+  transition:padding .4s,background .4s,box-shadow .4s;
+}
+nav.scrolled{padding:.75rem 5rem;background:rgba(247,237,216,.97);box-shadow:0 2px 40px rgba(0,0,0,.07)}
+.nav-logo{font-family:var(--serif);font-size:1.55rem;font-weight:600;color:var(--forest);letter-spacing:-.02em;text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  font-size:.78rem;font-weight:500;color:var(--forest);text-decoration:none;
+  letter-spacing:.09em;text-transform:uppercase;position:relative;padding-bottom:2px;
+}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--gold);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  background:var(--forest);color:var(--cream);padding:.55rem 1.6rem;
+  border-radius:50px;font-size:.76rem;font-weight:500;text-decoration:none;
+  letter-spacing:.07em;text-transform:uppercase;transition:all .3s;
+}
+.nav-cta:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,136,74,.35)}
+
+/* ── IMAGE PLACEHOLDER SYSTEM ── */
+.img-ph{
+  position:relative;overflow:hidden;background:linear-gradient(135deg,#1e4433 0%,#0f2218 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.img-ph .ph-inner{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.6rem;z-index:0;
+  padding:1rem;text-align:center;
+}
+.ph-icon{font-size:2.8rem;opacity:.35}
+.ph-label{font-size:.62rem;color:rgba(247,237,216,.28);font-family:monospace;letter-spacing:.04em;line-height:1.5}
+.img-ph img,.img-ph video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:1;display:block;
+}
+/* video placeholder */
+.vid-ph{
+  position:relative;overflow:hidden;background:#0a1a0e;
+  border-radius:20px;
+}
+.vid-ph .vid-inner{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1rem;z-index:0;
+}
+.vid-play{
+  width:72px;height:72px;background:rgba(196,136,74,.85);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;cursor:pointer;transition:transform .3s,background .3s;
+}
+.vid-play:hover{transform:scale(1.1);background:var(--gold)}
+.vid-file{font-size:.65rem;color:rgba(255,255,255,.25);font-family:monospace;letter-spacing:.05em}
+.vid-ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes expandRing{0%{transform:translate(-50%,-50%) scale(.2);opacity:.6}100%{transform:translate(-50%,-50%) scale(2.4);opacity:0}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes scrollBar{0%,100%{transform:scaleY(0) translateY(0);opacity:0}30%{opacity:1}100%{transform:scaleY(1) translateY(0)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes morphBlob{
+  0%,100%{border-radius:62% 38% 46% 54%/60% 44% 56% 40%}
+  25%{border-radius:40% 60% 56% 44%/46% 60% 40% 54%}
+  50%{border-radius:54% 46% 38% 62%/44% 56% 44% 56%}
+  75%{border-radius:46% 54% 62% 38%/56% 40% 60% 44%}
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
+.reveal.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* blobs */
+.blob{position:absolute;border-radius:62% 38% 46% 54%/60% 44% 56% 40%;animation:morphBlob ease-in-out infinite;pointer-events:none}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;position:relative;display:flex;
+  align-items:center;justify-content:center;overflow:hidden;background:var(--forest-deep);
+}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-media .img-ph{height:100%}
+/* video fallback */
+.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.hero-overlay{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(
+    135deg,
+    rgba(15,34,24,.82) 0%,
+    rgba(27,58,45,.65) 50%,
+    rgba(15,34,24,.75) 100%
+  );
+}
+.hero-overlay2{
+  position:absolute;inset:0;z-index:2;
+  background:radial-gradient(ellipse at 20% 80%,rgba(143,174,139,.18) 0%,transparent 55%),
+             radial-gradient(ellipse at 80% 20%,rgba(196,136,74,.14) 0%,transparent 55%);
+}
+.h-ring{
+  position:absolute;border-radius:50%;border:1px solid rgba(196,136,74,.15);
+  left:50%;top:50%;pointer-events:none;z-index:3;animation:expandRing ease-out infinite;
+}
+.hero-content{position:relative;z-index:5;text-align:center;padding:2rem;max-width:920px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:rgba(196,136,74,.14);border:1px solid rgba(196,136,74,.32);
+  color:var(--gold-light);padding:.38rem 1.25rem;border-radius:50px;
+  font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:2rem;
+  animation:fadeDown 1s ease .2s both;
+}
+.hero-badge::before{
+  content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;
+  animation:blink 1.6s ease infinite;
+}
+.hero-title{
+  font-family:var(--serif);font-size:clamp(3.8rem,8.5vw,7.5rem);
+  font-weight:300;color:var(--cream);line-height:.95;letter-spacing:-.025em;
+  margin-bottom:1.6rem;animation:fadeUp 1.2s ease .4s both;
+}
+.hero-title em{font-style:italic;color:var(--gold-light)}
+.hero-tag{
+  font-size:.82rem;color:rgba(247,237,216,.45);letter-spacing:.22em;
+  text-transform:uppercase;font-weight:300;margin-bottom:2rem;
+  animation:fadeUp 1.2s ease .55s both;
+}
+.hero-sub{
+  font-size:1.02rem;color:rgba(247,237,216,.68);max-width:560px;
+  margin:0 auto 3rem;line-height:1.9;font-weight:300;
+  animation:fadeUp 1.2s ease .7s both;
+}
+.hero-actions{
+  display:flex;gap:1.2rem;justify-content:center;align-items:center;flex-wrap:wrap;
+  animation:fadeUp 1.2s ease .85s both;
+}
+.btn-primary{
+  background:var(--gold);color:#fff;padding:.88rem 2.6rem;border-radius:50px;
+  font-size:.8rem;font-weight:500;text-decoration:none;letter-spacing:.07em;
+  text-transform:uppercase;transition:all .3s;display:inline-block;position:relative;overflow:hidden;
+}
+.btn-primary::before{
+  content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);
+  transform:translateX(-101%);transition:transform .4s;
+}
+.btn-primary:hover::before{transform:translateX(0)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(196,136,74,.45)}
+.btn-ghost{
+  color:var(--cream);border:1px solid rgba(247,237,216,.28);padding:.88rem 2.6rem;
+  border-radius:50px;font-size:.8rem;font-weight:400;text-decoration:none;
+  letter-spacing:.07em;text-transform:uppercase;transition:all .3s;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.scroll-ind{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  color:rgba(247,237,216,.3);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;
+  animation:fadeUp 1.2s ease 1.4s both;z-index:5;
+}
+.scroll-bar{width:1px;height:52px;background:linear-gradient(to bottom,transparent,rgba(196,136,74,.55));animation:scrollBar 2.2s ease-in-out infinite}
+
+/* ── TRUST BAR ── */
+.trust-bar{
+  background:var(--cream);padding:1rem 5rem;
+  display:flex;align-items:center;justify-content:center;gap:2.2rem;flex-wrap:wrap;
+  border-bottom:1px solid rgba(196,136,74,.14);
+}
+.ti{display:flex;align-items:center;gap:.55rem;font-size:.74rem;font-weight:500;color:var(--forest);letter-spacing:.05em;white-space:nowrap}
+.td{width:5px;height:5px;background:var(--gold);border-radius:50%}
+.tv{width:1px;height:18px;background:rgba(196,136,74,.22)}
+
+/* ── MARQUEE ── */
+.mq-wrap{overflow:hidden;background:var(--gold);padding:.7rem 0}
+.mq-track{display:flex;animation:marqueeScroll 26s linear infinite;white-space:nowrap}
+.mq-item{
+  padding:0 2.2rem;font-size:.7rem;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:1.5rem;
+}
+.mq-item::after{content:'◦';color:rgba(255,255,255,.4);font-size:1rem}
+
+/* ── SECTION HELPERS ── */
+section{position:relative}
+.sec-label{
+  font-size:.65rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.9rem;display:flex;align-items:center;gap:.8rem;
+}
+.sec-label::before{content:'';width:26px;height:1px;background:var(--gold);display:inline-block}
+.sec-label.c{justify-content:center}
+.sec-label.c::before{display:none}
+.sec-title{font-family:var(--serif);font-size:clamp(2.3rem,4vw,3.5rem);font-weight:300;line-height:1.1;color:var(--forest);margin-bottom:1.6rem}
+.sec-title em{font-style:italic;color:var(--gold)}
+.sec-body{font-size:.95rem;line-height:1.92;color:#555;font-weight:300;margin-bottom:1.2rem}
+.wave{display:block;width:100%}
+
+/* ── ABOUT ── */
+.about{padding:9rem 5rem;background:var(--white);overflow:hidden}
+.about-bg{
+  position:absolute;font-family:var(--serif);font-size:16vw;font-weight:700;
+  color:rgba(27,58,45,.025);top:50%;left:50%;transform:translate(-50%,-50%);
+  white-space:nowrap;pointer-events:none;user-select:none;z-index:0;
+}
+.about-inner{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;gap:7rem;align-items:center;position:relative;z-index:1}
+.about-visual{position:relative;height:540px}
+.about-main-img{
+  position:absolute;top:0;left:0;right:90px;bottom:90px;
+  border-radius:36px;overflow:hidden;box-shadow:0 30px 80px rgba(27,58,45,.22);
+}
+.about-main-img .img-ph{height:100%}
+.about-accent{
+  position:absolute;bottom:0;right:0;width:220px;height:220px;
+  background:var(--cream);border:2px solid var(--cream-deep);
+  border-radius:28px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.1);animation:floatY 4.5s ease-in-out infinite;
+}
+.about-accent .img-ph{height:100%}
+.about-stat{
+  position:absolute;top:2rem;right:110px;
+  background:var(--gold);color:#fff;padding:.7rem 1.4rem;
+  border-radius:50px;font-size:.72rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;box-shadow:0 8px 30px rgba(196,136,74,.45);
+  animation:floatY 5s ease-in-out .5s infinite;
+}
+
+/* ── VALUES ── */
+.values{padding:8rem 5rem;background:var(--forest);overflow:hidden}
+.values-inner{max-width:1220px;margin:0 auto}
+.values-hd{text-align:center;margin-bottom:5rem}
+.val-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.val-card{
+  background:rgba(247,237,216,.05);border:1px solid rgba(196,136,74,.18);
+  border-radius:24px;padding:2.8rem 2rem;transition:all .4s;
+  position:relative;overflow:hidden;
+}
+.val-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s;
+}
+.val-card:hover{background:rgba(247,237,216,.09);transform:translateY(-10px);box-shadow:0 24px 60px rgba(0,0,0,.25)}
+.val-card:hover::before{transform:scaleX(1)}
+.val-icon{
+  width:56px;height:56px;background:rgba(196,136,74,.14);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+  margin-bottom:1.4rem;transition:background .3s;
+}
+.val-card:hover .val-icon{background:rgba(196,136,74,.25)}
+.val-name{font-family:var(--serif);font-size:1.3rem;color:var(--cream);margin-bottom:.8rem}
+.val-desc{font-size:.84rem;color:rgba(247,237,216,.48);line-height:1.75;font-weight:300}
+
+/* ── PRODUCTS ── */
+.products{padding:9rem 5rem;background:var(--cream);overflow:hidden}
+.products-inner{max-width:1340px;margin:0 auto}
+.prod-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem}
+.view-all{
+  font-size:.75rem;font-weight:500;color:var(--forest);text-decoration:none;
+  letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--forest);
+  padding-bottom:2px;transition:color .3s,border-color .3s;
+}
+.view-all:hover{color:var(--gold);border-color:var(--gold)}
+.prod-tabs{display:flex;gap:.5rem;margin-bottom:3rem;flex-wrap:wrap}
+.tab{
+  background:transparent;border:1px solid rgba(196,136,74,.3);color:var(--forest);
+  padding:.48rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:500;
+  cursor:none;letter-spacing:.05em;transition:all .3s;font-family:var(--sans);
+}
+.tab.active,.tab:hover{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+
+/* product card */
+.prod-card{
+  background:var(--white);border-radius:28px;overflow:hidden;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  position:relative;display:none;
+}
+.prod-card.vis{display:block;animation:cardIn .4s ease forwards}
+.prod-card:hover{transform:translateY(-14px);box-shadow:0 32px 80px rgba(27,58,45,.18)}
+.prod-img-wrap{height:240px;position:relative;overflow:hidden}
+.prod-img-wrap .img-ph{height:100%}
+.prod-img-wrap img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s cubic-bezier(.4,0,.2,1);display:block;
+}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.07)}
+.prod-badge{
+  position:absolute;top:1rem;left:1rem;z-index:5;
+  background:var(--forest);color:var(--cream);
+  padding:.22rem .8rem;border-radius:50px;
+  font-size:.6rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+}
+.prod-badge.gold{background:var(--gold)}
+.prod-body{padding:1.8rem}
+.prod-cat{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.prod-name{font-family:var(--serif);font-size:1.25rem;color:var(--forest);margin-bottom:.55rem}
+.prod-desc{font-size:.8rem;color:#999;line-height:1.65;margin-bottom:1.3rem}
+.prod-footer{display:flex;align-items:center;justify-content:space-between}
+.prod-price{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--forest)}
+.prod-price small{font-size:.68rem;font-weight:400;color:#bbb;display:block;font-family:var(--sans)}
+.prod-add{
+  width:40px;height:40px;background:var(--forest);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--cream);
+  font-size:1.3rem;transition:all .3s;cursor:none;border:none;font-family:var(--sans);
+}
+.prod-add:hover{background:var(--gold);transform:rotate(90deg)}
+
+/* product card bg colors (fallback when no image) */
+.pc-green .img-ph{background:linear-gradient(135deg,#deeee3,#b8d9c0)}
+.pc-yellow .img-ph{background:linear-gradient(135deg,#fdf8d8,#f5e49a)}
+.pc-orange .img-ph{background:linear-gradient(135deg,#fde8d0,#f5c090)}
+.pc-blue .img-ph{background:linear-gradient(135deg,#deeef8,#b0d2e8)}
+.pc-rose .img-ph{background:linear-gradient(135deg,#fde4ec,#f5b0c5)}
+.pc-brown .img-ph{background:linear-gradient(135deg,#eddfd0,#d9c0a0)}
+.pc-olive .img-ph{background:linear-gradient(135deg,#e5ecd5,#c8d4a0)}
+.pc-teal .img-ph{background:linear-gradient(135deg,#d5e8e0,#9ac5b5)}
+
+/* ── PROCESS VIDEO ── */
+.process{padding:9rem 5rem;background:var(--forest-deep);overflow:hidden}
+.process-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.process-text .sec-title{color:var(--cream)}
+.process-text .sec-body{color:rgba(247,237,216,.55)}
+.process-steps{display:flex;flex-direction:column;gap:1.4rem;margin-top:2rem}
+.ps{display:flex;align-items:flex-start;gap:1.2rem}
+.ps-num{
+  min-width:36px;height:36px;border-radius:50%;border:1px solid rgba(196,136,74,.4);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:.95rem;color:var(--gold);flex-shrink:0;
+}
+.ps-text strong{display:block;font-size:.88rem;color:var(--cream);font-weight:500;margin-bottom:.25rem}
+.ps-text span{font-size:.8rem;color:rgba(247,237,216,.42);line-height:1.6}
+.process-video-wrap{border-radius:24px;overflow:hidden;position:relative}
+.process-video-wrap .vid-ph{
+  aspect-ratio:9/12;max-height:600px;border-radius:24px;
+  background:linear-gradient(135deg,#1e4433 0%,#0a1a0e 100%);
+}
+.process-video-wrap .vid-ph video{border-radius:0}
+
+/* ── INGREDIENTS ── */
+.ingredients{padding:9rem 5rem;background:var(--white);overflow:hidden}
+.ingredients-inner{max-width:1220px;margin:0 auto}
+.ing-hd{text-align:center;margin-bottom:5rem}
+.ing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.ing-card{
+  border-radius:24px;overflow:hidden;position:relative;
+  cursor:none;transition:transform .4s,box-shadow .4s;
+}
+.ing-card:hover{transform:translateY(-8px);box-shadow:0 28px 70px rgba(27,58,45,.14)}
+.ing-img{height:200px;position:relative}
+.ing-img .img-ph{height:100%}
+.ing-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;display:block}
+.ing-card:hover .ing-img img{transform:scale(1.06)}
+.ing-body{
+  padding:1.8rem;background:var(--white);
+  border:1px solid rgba(196,136,74,.15);border-top:none;
+  border-radius:0 0 24px 24px;
+}
+.ing-name{font-family:var(--serif);font-size:1.4rem;color:var(--forest);margin-bottom:.65rem}
+.ing-ben{font-size:.84rem;color:#777;line-height:1.75;margin-bottom:.85rem;font-weight:300}
+.ing-found{font-size:.65rem;font-weight:500;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
+
+/* ── OFFERS ── */
+.offers{padding:9rem 5rem;background:var(--cream);overflow:hidden}
+.offers-inner{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.offer-cards{display:flex;flex-direction:column;gap:1.1rem}
+.offer-card{
+  background:var(--white);border-radius:20px;padding:1.8rem 2.2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  border:1px solid transparent;transition:all .35s;
+}
+.offer-card:hover{border-color:var(--gold);transform:translateX(8px);box-shadow:0 12px 40px rgba(196,136,74,.12)}
+.offer-lbl{font-family:var(--serif);font-size:1.2rem;color:var(--forest)}
+.offer-sublbl{font-size:.75rem;color:#aaa;margin-top:.3rem}
+.offer-price{font-family:var(--serif);font-size:1.85rem;font-weight:600;color:var(--gold);text-align:right}
+.offer-price small{font-size:.7rem;font-family:var(--sans);color:#bbb;font-weight:300;display:block}
+.offer-ws{
+  background:var(--forest);border-radius:20px;padding:1.8rem 2.2rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.offer-ws-text{color:var(--cream);font-family:var(--serif);font-size:1.12rem}
+.offer-ws-sub{color:rgba(247,237,216,.45);font-size:.78rem;margin-top:.25rem}
+.offer-ws-cta{
+  background:var(--gold);color:#fff;padding:.6rem 1.5rem;border-radius:50px;
+  font-size:.72rem;font-weight:500;text-decoration:none;text-transform:uppercase;
+  letter-spacing:.08em;white-space:nowrap;transition:all .3s;flex-shrink:0;
+}
+.offer-ws-cta:hover{background:var(--gold-light);transform:scale(1.05)}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:9rem 5rem;background:var(--forest-deep);overflow:hidden}
+.testimonials-inner{max-width:1100px;margin:0 auto}
+.test-hd{text-align:center;margin-bottom:5rem}
+.test-slider{position:relative;overflow:hidden;border-radius:24px}
+.test-track{display:flex;transition:transform .65s cubic-bezier(.4,0,.2,1)}
+.test-card{
+  min-width:100%;padding:4rem;
+  background:rgba(247,237,216,.04);
+  border:1px solid rgba(196,136,74,.18);border-radius:24px;text-align:center;
+}
+.test-stars{font-size:1.1rem;letter-spacing:.12em;margin-bottom:1.8rem;color:#f0c070}
+.test-text{
+  font-family:var(--serif);font-size:1.55rem;font-weight:300;font-style:italic;
+  color:var(--cream);line-height:1.65;max-width:700px;margin:0 auto 2.5rem;
+}
+.test-author-row{display:flex;align-items:center;justify-content:center;gap:1rem}
+.test-avatar{
+  width:48px;height:48px;border-radius:50%;overflow:hidden;
+  border:2px solid rgba(196,136,74,.35);flex-shrink:0;
+}
+.test-avatar .img-ph{height:100%}
+.test-author{font-size:.8rem;font-weight:600;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;text-align:left}
+.test-loc{font-size:.72rem;color:rgba(247,237,216,.35);margin-top:.2rem}
+.sdots{display:flex;justify-content:center;gap:.9rem;margin-top:3rem}
+.sdot{width:8px;height:8px;border-radius:50%;background:rgba(247,237,216,.25);border:none;cursor:none;transition:all .3s}
+.sdot.active{background:var(--gold);width:26px;border-radius:4px}
+
+/* ── DELIVERY ── */
+.delivery{padding:9rem 5rem;background:var(--white);overflow:hidden}
+.delivery-inner{max-width:1220px;margin:0 auto}
+.del-hd{text-align:center;margin-bottom:5rem}
+.del-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.del-card{
+  border-radius:28px;overflow:hidden;transition:transform .4s,box-shadow .4s;
+}
+.del-card:hover{transform:translateY(-10px);box-shadow:0 28px 70px rgba(27,58,45,.12)}
+.del-img{height:200px;position:relative}
+.del-img .img-ph{height:100%}
+.del-img img{width:100%;height:100%;object-fit:cover;display:block}
+.del-body{
+  padding:2.2rem;background:var(--cream);
+  border:1px solid rgba(196,136,74,.12);border-top:none;
+  border-radius:0 0 28px 28px;
+}
+.del-icon{
+  width:52px;height:52px;background:rgba(27,58,45,.08);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:1.1rem;
+}
+.del-title{font-family:var(--serif);font-size:1.38rem;color:var(--forest);margin-bottom:.7rem}
+.del-desc{font-size:.84rem;color:#888;line-height:1.75;font-weight:300}
+
+/* ── INSTAGRAM ── */
+.instagram{padding:7rem 5rem;background:var(--forest);overflow:hidden}
+.instagram-inner{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1fr 1.8fr;gap:5rem;align-items:center}
+.ig-left .sec-title{color:var(--cream)}
+.ig-left .sec-body{color:rgba(247,237,216,.5)}
+.ig-handle{font-family:var(--serif);font-size:2.5rem;font-style:italic;color:var(--gold-light);margin-bottom:.5rem}
+.ig-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem}
+.ig-box{
+  aspect-ratio:1;border-radius:10px;overflow:hidden;position:relative;
+  transition:transform .3s;cursor:none;
+}
+.ig-box:hover{transform:scale(1.06)}
+.ig-box .img-ph{height:100%}
+.ig-box img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.ig-box:hover img{transform:scale(1.1)}
+
+/* ── CONTACT CTA ── */
+.cta{padding:10rem 5rem;background:var(--forest);text-align:center;overflow:hidden;position:relative}
+.cta-bg{position:absolute;inset:0;z-index:0}
+.cta-bg .img-ph{height:100%;opacity:.12}
+.cta-inner{max-width:820px;margin:0 auto;position:relative;z-index:2}
+.cta-title{
+  font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;
+  color:var(--cream);line-height:1.05;margin-bottom:1.6rem;
+}
+.cta-title em{font-style:italic;color:var(--gold-light)}
+.cta-sub{font-size:.95rem;color:rgba(247,237,216,.55);max-width:520px;margin:0 auto 3rem;line-height:1.9;font-weight:300}
+.cta-contacts{display:flex;justify-content:center;gap:3rem;margin-bottom:3.5rem;flex-wrap:wrap}
+.cta-ci{display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.cta-lbl{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.cta-val{font-size:.9rem;color:var(--cream);font-weight:300}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-wa{
+  background:#25D366;color:#fff;padding:.88rem 2.4rem;border-radius:50px;
+  font-size:.8rem;font-weight:500;text-decoration:none;display:flex;
+  align-items:center;gap:.65rem;transition:all .3s;
+}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(37,211,102,.45)}
+
+/* ── FOOTER ── */
+footer{background:var(--forest-deep);padding:5rem 5rem 2.5rem}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3.5rem}
+.ft-logo{font-family:var(--serif);font-size:1.7rem;font-weight:600;color:var(--cream);margin-bottom:1rem;display:block}
+.ft-logo span{color:var(--gold)}
+.ft-tag{font-size:.82rem;color:rgba(247,237,216,.42);line-height:1.75;font-weight:300;max-width:280px;margin-bottom:1.8rem}
+.ft-socials{display:flex;gap:.75rem}
+.ft-si{
+  width:38px;height:38px;border:1px solid rgba(196,136,74,.28);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cream);text-decoration:none;font-size:.85rem;transition:all .3s;
+}
+.ft-si:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-3px)}
+.ft-col-title{font-size:.65rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.ft-links a{font-size:.82rem;color:rgba(247,237,216,.42);text-decoration:none;transition:color .3s;font-weight:300}
+.ft-links a:hover{color:var(--cream)}
+.ft-bottom{
+  border-top:1px solid rgba(247,237,216,.07);padding-top:2.2rem;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+}
+.ft-copy{font-size:.72rem;color:rgba(247,237,216,.26)}
+.ft-seo{font-size:.66rem;color:rgba(247,237,216,.12);max-width:560px;line-height:1.65}
+
+/* ── FLOATING WA ── */
+.fwa{
+  position:fixed;bottom:2.5rem;right:2.5rem;z-index:400;
+  display:flex;align-items:center;gap:.7rem;background:#25D366;color:#fff;
+  padding:.8rem 1.5rem;border-radius:50px;text-decoration:none;font-size:.78rem;
+  font-weight:500;box-shadow:0 8px 30px rgba(37,211,102,.4);
+  transition:all .3s;animation:floatY 3.5s ease-in-out infinite;
+}
+.fwa:hover{box-shadow:0 18px 50px rgba(37,211,102,.55);transform:scale(1.05)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  nav{padding:1rem 2.5rem}
+  nav.scrolled{padding:.75rem 2.5rem}
+  .about-inner,.offers-inner,.process-inner,.instagram-inner{grid-template-columns:1fr;gap:4rem}
+  .val-grid{grid-template-columns:repeat(2,1fr)}
+  .prod-grid,.ing-grid,.del-grid{grid-template-columns:repeat(2,1fr)}
+  .about-visual{height:380px}
+  .ft-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  nav{padding:.9rem 1.5rem}
+  nav.scrolled{padding:.65rem 1.5rem}
+  .nav-links{display:none}
+  .about,.values,.products,.ingredients,.offers,.testimonials,.delivery,.instagram,.cta,.process{padding:6rem 1.5rem}
+  .trust-bar{padding:1rem 1.5rem;gap:1rem}
+  .val-grid,.prod-grid,.ing-grid,.del-grid{grid-template-columns:1fr}
+  .ig-grid{grid-template-columns:repeat(3,1fr)}
+  .ft-top{grid-template-columns:1fr;gap:2.5rem}
+  footer{padding:3.5rem 1.5rem 2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cur-ring" id="curRing"></div>
+<div class="cur-dot" id="curDot"></div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/255798538366" class="fwa" target="_blank">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  Order on WhatsApp
+</a>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">Zanzibar<span>.</span>Soap</a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#ingredients">Ingredients</a></li>
+    <li><a href="#delivery">Delivery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Shop Now</a>
+</nav>
+
+<!-- ════════════════════════════════════
+     HERO
+     video: videos/hero-bg.mp4  (autoplay loop, Zanzibar scenery or soap-making)
+     fallback image: images/hero-bg.jpg
+════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-media">
+    <div class="img-ph">
+      <div class="ph-inner">
+        <span class="ph-icon">🎬</span>
+        <span class="ph-label">videos/hero-bg.mp4<br>Hero background video<br>(Zanzibar coast / spice market / soap-making)</span>
+      </div>
+      <img src="images/hero-bg.jpg" alt="Zanzibar natural skincare">
+      <video autoplay muted loop playsinline poster="images/hero-bg.jpg">
+        <source src="videos/hero-bg.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay2"></div>
+  <!-- rings -->
+  <div class="h-ring" style="width:380px;height:380px;animation-duration:4s;animation-delay:0s"></div>
+  <div class="h-ring" style="width:380px;height:380px;animation-duration:4s;animation-delay:1.35s"></div>
+  <div class="h-ring" style="width:380px;height:380px;animation-duration:4s;animation-delay:2.7s"></div>
+  <!-- blobs -->
+  <div class="blob" style="width:500px;height:500px;background:rgba(143,174,139,.06);top:-150px;right:-180px;animation-duration:14s;z-index:3"></div>
+  <div class="blob" style="width:360px;height:360px;background:rgba(196,136,74,.05);bottom:-100px;left:-100px;animation-duration:18s;animation-delay:5s;z-index:3"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">🌿 Natural &nbsp;·&nbsp; Organic &nbsp;·&nbsp; Proudly Tanzanian</div>
+    <h1 class="hero-title">Natural Beauty<br><em>Born in Zanzibar</em></h1>
+    <p class="hero-tag">It's not just soap — it's our pride.</p>
+    <p class="hero-sub">We craft 100% natural soaps, scrubs, and body oils using Africa's finest ingredients — turmeric, honey, shea butter, coffee, and more. Gentle on your skin. Kind to your confidence.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">Explore Products</a>
+      <a href="#about" class="btn-ghost">Our Story</a>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-bar"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="ti"><span class="td"></span> 100% Natural</div>
+  <div class="tv"></div>
+  <div class="ti"><span class="td"></span> No Harsh Chemicals</div>
+  <div class="tv"></div>
+  <div class="ti"><span class="td"></span> All Skin Types</div>
+  <div class="tv"></div>
+  <div class="ti"><span class="td"></span> Made in Tanzania</div>
+  <div class="tv"></div>
+  <div class="ti"><span class="td"></span> Worldwide Shipping</div>
+  <div class="tv"></div>
+  <div class="ti"><span class="td"></span> 1,400+ Happy Customers</div>
+</div>
+
+<!-- MARQUEE -->
+<div class="mq-wrap">
+  <div class="mq-track">
+    <div class="mq-item">Natural Skincare</div><div class="mq-item">Zanzibar Inspired</div><div class="mq-item">Turmeric &amp; Honey</div><div class="mq-item">Shea Butter</div><div class="mq-item">Coffee Scrub</div><div class="mq-item">Ships Worldwide</div><div class="mq-item">African Heritage</div><div class="mq-item">No Chemicals</div>
+    <div class="mq-item">Natural Skincare</div><div class="mq-item">Zanzibar Inspired</div><div class="mq-item">Turmeric &amp; Honey</div><div class="mq-item">Shea Butter</div><div class="mq-item">Coffee Scrub</div><div class="mq-item">Ships Worldwide</div><div class="mq-item">African Heritage</div><div class="mq-item">No Chemicals</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     ABOUT
+     images/about-main.jpg  — artisan making soap / Zanzibar workshop
+     images/about-accent.jpg — close-up of ingredients / product detail
+════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="about-bg">Zanzibar</div>
+  <div class="about-inner">
+    <div>
+      <div class="sec-label reveal">Our Story</div>
+      <h2 class="sec-title reveal d1">It's Not Just Soap.<br><em>It's Our Pride.</em></h2>
+      <p class="sec-body reveal d2">There's something special about Zanzibar. Its spices, its ancient trade routes that carried the finest botanicals across the world. For us, it was never just a name — it was the inspiration behind everything we make.</p>
+      <p class="sec-body reveal d3">We are a Tanzanian beauty company, manufacturing 100% natural skincare products that are affordable, honest, and deeply effective. Every product is a tribute to the richness of our land and a commitment to the health of your skin.</p>
+      <a href="#products" class="btn-primary reveal d4" style="margin-top:.5rem;display:inline-block">Discover Our Products</a>
+    </div>
+    <div class="about-visual reveal d2">
+      <!-- Main image -->
+      <div class="about-main-img">
+        <div class="img-ph">
+          <div class="ph-inner">
+            <span class="ph-icon">📸</span>
+            <span class="ph-label">images/about-main.jpg<br>Artisan making soap<br>or Zanzibar workshop scene</span>
+          </div>
+          <img src="images/about-main.jpg" alt="Zanzibar Soap artisan workshop">
+        </div>
+      </div>
+      <!-- Accent / floating image -->
+      <div class="about-accent">
+        <div class="img-ph">
+          <div class="ph-inner">
+            <span class="ph-icon">🌿</span>
+            <span class="ph-label">images/about-accent.jpg<br>Close-up ingredients</span>
+          </div>
+          <img src="images/about-accent.jpg" alt="Natural skincare ingredients">
+        </div>
+      </div>
+      <!-- Floating badge -->
+      <div class="about-stat">100% Natural — Always</div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values" id="values">
+  <div class="blob" style="width:600px;height:600px;background:rgba(143,174,139,.04);top:-220px;right:-240px;animation-duration:20s;z-index:0"></div>
+  <div class="values-inner">
+    <div class="values-hd">
+      <div class="sec-label c reveal" style="color:rgba(196,136,74,.75)">Why Choose Us</div>
+      <h2 class="sec-title reveal d1" style="color:var(--cream);text-align:center">Our Promise<br><em>to Your Skin</em></h2>
+    </div>
+    <div class="val-grid">
+      <div class="val-card reveal d1">
+        <div class="val-icon">🌿</div>
+        <div class="val-name">100% Natural</div>
+        <p class="val-desc">Every product is formulated with ingredients sourced from nature. No parabens, no sulfates, no compromise — ever.</p>
+      </div>
+      <div class="val-card reveal d2">
+        <div class="val-icon">💧</div>
+        <div class="val-name">Deep Moisture</div>
+        <p class="val-desc">Our formulas go beyond surface-level cleansing. We moisturize, heal, and restore — every single wash.</p>
+      </div>
+      <div class="val-card reveal d3">
+        <div class="val-icon">🛡️</div>
+        <div class="val-name">Safe &amp; Gentle</div>
+        <p class="val-desc">From sensitive skin to oily skin, children to adults — gentle enough for daily use by your whole family.</p>
+      </div>
+      <div class="val-card reveal d4">
+        <div class="val-icon">🤍</div>
+        <div class="val-name">Made with Love</div>
+        <p class="val-desc">Each product is prepared with intention, pride, and care — because your skin genuinely feels the difference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<svg class="wave" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" style="background:var(--cream);margin-top:-1px"><path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="#1B3A2D"/></svg>
+
+<!-- ════════════════════════════════════
+     PRODUCTS
+     images/products/shea-butter-soap.jpg
+     images/products/lemon-honey-soap.jpg
+     images/products/turmeric-honey-soap.jpg
+     images/products/nuru-soap.jpg
+     images/products/molato-cream-soap.jpg
+     images/products/coffee-scrub.jpg
+     images/products/turmeric-scrub.jpg
+     images/products/golden-glow-oil.jpg
+════════════════════════════════════ -->
+<section class="products" id="products">
+  <div class="products-inner">
+    <div class="prod-hd reveal">
+      <div>
+        <div class="sec-label">Our Products</div>
+        <h2 class="sec-title">Nature-Powered<br><em>Skincare.</em></h2>
+      </div>
+      <a href="#contact" class="view-all">View All →</a>
+    </div>
+    <div class="prod-tabs reveal">
+      <button class="tab active" onclick="filterP('all',this)">All</button>
+      <button class="tab" onclick="filterP('soap',this)">Soaps</button>
+      <button class="tab" onclick="filterP('scrub',this)">Scrubs</button>
+      <button class="tab" onclick="filterP('oil',this)">Body Oil</button>
+    </div>
+    <div class="prod-grid" id="pgrid">
+
+      <!-- 1 -->
+      <div class="prod-card pc-green vis" data-cat="soap">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🧼</span><span class="ph-label">images/products/shea-butter-soap.jpg</span></div>
+            <img src="images/products/shea-butter-soap.jpg" alt="Luxury Shea Butter Soap" loading="lazy">
+          </div>
+          <div class="prod-badge">Best Seller</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Bar Soap</div>
+          <div class="prod-name">Luxury Shea Butter Soap</div>
+          <div class="prod-desc">Deep moisturizing, long-lasting softness — ideal for dry skin. Africa's finest moisturizer in every bar.</div>
+          <div class="prod-footer">
+            <div class="prod-price">TZS 5,000<small>per bar</small></div>
+            <button class="prod-add" onclick="order('Luxury Shea Butter Soap')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="prod-card pc-yellow vis" data-cat="soap">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🍋</span><span class="ph-label">images/products/lemon-honey-soap.jpg</span></div>
+            <img src="images/products/lemon-honey-soap.jpg" alt="Lemon & Honey Soap" loading="lazy">
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Bar Soap</div>
+          <div class="prod-name">Lemon &amp; Honey Soap</div>
+          <div class="prod-desc">Natural brightening, even skin tone, silky texture. A brightening duo your skin will love.</div>
+          <div class="prod-footer">
+            <div class="prod-price">TZS 5,000<small>per bar</small></div>
+            <button class="prod-add" onclick="order('Lemon & Honey Soap')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="prod-card pc-orange vis" data-cat="soap">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">✨</span><span class="ph-label">images/products/turmeric-honey-soap.jpg</span></div>
+            <img src="images/products/turmeric-honey-soap.jpg" alt="Turmeric & Honey Soap" loading="lazy">
+          </div>
+          <div class="prod-badge gold">Glow Special</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Bar Soap</div>
+          <div class="prod-name">Turmeric &amp; Honey Soap</div>
+          <div class="prod-desc">Reduces dark spots, deep hydration, natural glow. The golden standard of natural skincare.</div>
+          <div class="prod-footer">
+            <div class="prod-price">TZS 5,000<small>per bar</small></div>
+            <button class="prod-add" onclick="order('Turmeric & Honey Soap')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="prod-card pc-blue vis" data-cat="soap">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🌿</span><span class="ph-label">images/products/nuru-soap.jpg</span></div>
+            <img src="images/products/nuru-soap.jpg" alt="Nuru Soap" loading="lazy">
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Herbal Soap</div>
+          <div class="prod-name">Nuru Soap</div>
+          <div class="prod-desc">Fights acne, deep cleansing, ideal for oily skin. Herbal treatment for a clear, refreshed complexion.</div>
+          <div class="prod-footer">
+            <div class="prod-price">TZS 3,000<small>per bar</small></div>
+            <button class="prod-add" onclick="order('Nuru Soap')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="prod-card pc-rose vis" data-cat="soap">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">💎</span><span class="ph-label">images/products/molato-cream-soap.jpg</span></div>
+            <img src="images/products/molato-cream-soap.jpg" alt="Molato Beauty Cream Soap" loading="lazy">
+          </div>
+          <div class="prod-badge">Premium</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Cream Soap</div>
+          <div class="prod-name">Molato Beauty Cream Soap</div>
+          <div class="prod-desc">Deep hydration, gentle exfoliation, smooth skin. Luxury in every single lather.</div>
+          <div class="prod-footer">
+            <div class="prod-price">TZS 25,000<small>per bar</small></div>
+            <button class="prod-add" onclick="order('Molato Beauty Cream Soap')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="prod-card pc-brown vis" data-cat="scrub">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">☕</span><span class="ph-label">images/products/coffee-scrub.jpg</span></div>
+            <img src="images/products/coffee-scrub.jpg" alt="Coffee Exfoliating Scrub" loading="lazy">
+          </div>
+          <div class="prod-badge">Top Rated</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Exfoliating Scrub</div>
+          <div class="prod-name">Coffee Exfoliating Scrub</div>
+          <div class="prod-desc">Removes dead skin, smooths texture, eliminates facial blemishes. Wake up your skin.</div>
+          <div class="prod-footer">
+            <div class="prod-price">TZS 30,000<small>per jar</small></div>
+            <button class="prod-add" onclick="order('Coffee Exfoliating Scrub')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="prod-card pc-olive vis" data-cat="scrub">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🌾</span><span class="ph-label">images/products/turmeric-scrub.jpg</span></div>
+            <img src="images/products/turmeric-scrub.jpg" alt="Turmeric Glow Scrub" loading="lazy">
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Glow Scrub</div>
+          <div class="prod-name">Turmeric Glow Scrub</div>
+          <div class="prod-desc">Natural brightening, even skin tone, soft texture. Glow naturally from the inside out.</div>
+          <div class="prod-footer">
+            <div class="prod-price">TZS 30,000<small>per jar</small></div>
+            <button class="prod-add" onclick="order('Turmeric Glow Scrub')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="prod-card pc-teal vis" data-cat="oil">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">✨</span><span class="ph-label">images/products/golden-glow-oil.jpg</span></div>
+            <img src="images/products/golden-glow-oil.jpg" alt="Golden Glow Body Oil" loading="lazy">
+          </div>
+          <div class="prod-badge gold">Luxury</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Body Oil</div>
+          <div class="prod-name">Golden Glow Body Oil</div>
+          <div class="prod-desc">Moisturizes, hydrates, leaves skin refreshed and radiant. Pure luxury in a bottle.</div>
+          <div class="prod-footer">
+            <div class="prod-price">TZS 70,000<small>per bottle</small></div>
+            <button class="prod-add" onclick="order('Golden Glow Body Oil')">+</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WAVE 2 -->
+<svg class="wave" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" style="background:var(--forest-deep);margin-bottom:-1px"><path d="M0,40 C360,0 720,80 1080,40 C1260,20 1380,60 1440,40 L1440,0 L0,0 Z" fill="var(--cream)"/></svg>
+
+<!-- ════════════════════════════════════
+     PROCESS VIDEO SECTION
+     videos/soap-making-process.mp4
+     images/process-poster.jpg  (thumbnail shown before play)
+════════════════════════════════════ -->
+<section class="process" id="process">
+  <div class="blob" style="width:500px;height:500px;background:rgba(143,174,139,.05);bottom:-200px;left:-180px;animation-duration:18s;z-index:0"></div>
+  <div class="process-inner">
+    <div class="process-text">
+      <div class="sec-label reveal" style="color:rgba(196,136,74,.75)">Watch &amp; Believe</div>
+      <h2 class="sec-title reveal d1">Watch How We<br><em>Make It</em></h2>
+      <p class="sec-body reveal d2">Every bar is handcrafted with intention. From measuring raw ingredients to the final cut and cure — we pour care into every step so your skin feels the difference.</p>
+      <div class="process-steps reveal d3">
+        <div class="ps">
+          <div class="ps-num">01</div>
+          <div class="ps-text">
+            <strong>Source Premium Ingredients</strong>
+            <span>Turmeric, honey, shea butter, coffee — sourced fresh from Tanzanian markets and trusted suppliers.</span>
+          </div>
+        </div>
+        <div class="ps">
+          <div class="ps-num">02</div>
+          <div class="ps-text">
+            <strong>Blend &amp; Craft by Hand</strong>
+            <span>Each batch is mixed precisely to preserve the natural properties of every ingredient.</span>
+          </div>
+        </div>
+        <div class="ps">
+          <div class="ps-num">03</div>
+          <div class="ps-text">
+            <strong>Cure &amp; Quality Check</strong>
+            <span>Soaps are left to cure for the perfect texture and skin feel before being packaged for you.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- VIDEO -->
+    <div class="process-video-wrap reveal d2">
+      <div class="vid-ph">
+        <div class="vid-inner">
+          <div class="vid-play">▶</div>
+          <span class="vid-file">videos/soap-making-process.mp4<br>Soap making process video</span>
+        </div>
+        <video controls poster="images/process-poster.jpg">
+          <source src="videos/soap-making-process.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     INGREDIENTS
+     images/ingredients/turmeric.jpg
+     images/ingredients/honey.jpg
+     images/ingredients/shea-butter.jpg
+     images/ingredients/coffee.jpg
+     images/ingredients/lemon.jpg
+     images/ingredients/natural-oils.jpg
+════════════════════════════════════ -->
+<section class="ingredients" id="ingredients">
+  <div class="ingredients-inner">
+    <div class="ing-hd">
+      <div class="sec-label c reveal">What's Inside</div>
+      <h2 class="sec-title reveal d1" style="text-align:center">The Secret Is in the<br><em>Ingredients</em></h2>
+      <p class="sec-body reveal d2" style="max-width:560px;margin:0 auto;text-align:center">Natural ingredients trusted by African communities for generations, now formulated into modern skincare that genuinely delivers results.</p>
+    </div>
+    <div class="ing-grid">
+
+      <div class="ing-card reveal d1">
+        <div class="ing-img">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🌿</span><span class="ph-label">images/ingredients/turmeric.jpg</span></div>
+            <img src="images/ingredients/turmeric.jpg" alt="Turmeric" loading="lazy">
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Turmeric</div>
+          <p class="ing-ben">Brightens, evens tone, reduces dark spots. Curcumin's anti-inflammatory power gives skin a warm, natural glow without side effects.</p>
+          <div class="ing-found">Turmeric Soap · Glow Scrub</div>
+        </div>
+      </div>
+
+      <div class="ing-card reveal d2">
+        <div class="ing-img">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🍯</span><span class="ph-label">images/ingredients/honey.jpg</span></div>
+            <img src="images/ingredients/honey.jpg" alt="Honey" loading="lazy">
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Honey</div>
+          <p class="ing-ben">Moisturizes, heals, soothes. Packed with antioxidants and natural humectants that draw moisture into the skin for a fresh, dewy complexion.</p>
+          <div class="ing-found">Lemon &amp; Honey · Turmeric &amp; Honey</div>
+        </div>
+      </div>
+
+      <div class="ing-card reveal d3">
+        <div class="ing-img">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🥥</span><span class="ph-label">images/ingredients/shea-butter.jpg</span></div>
+            <img src="images/ingredients/shea-butter.jpg" alt="Shea Butter" loading="lazy">
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Shea Butter</div>
+          <p class="ing-ben">Deep hydration, softens, protects. Rich in fatty acids and vitamins A, E, and F — one of the most powerful natural moisturizers on earth.</p>
+          <div class="ing-found">Luxury Shea Butter Soap</div>
+        </div>
+      </div>
+
+      <div class="ing-card reveal d1">
+        <div class="ing-img">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">☕</span><span class="ph-label">images/ingredients/coffee.jpg</span></div>
+            <img src="images/ingredients/coffee.jpg" alt="Coffee" loading="lazy">
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Coffee</div>
+          <p class="ing-ben">Exfoliates, reduces puffiness, smooths. Real coffee grounds lift dead skin cells, improve circulation, and tighten skin in one powerful use.</p>
+          <div class="ing-found">Coffee Exfoliating Scrub</div>
+        </div>
+      </div>
+
+      <div class="ing-card reveal d2">
+        <div class="ing-img">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🍋</span><span class="ph-label">images/ingredients/lemon.jpg</span></div>
+            <img src="images/ingredients/lemon.jpg" alt="Lemon" loading="lazy">
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Lemon</div>
+          <p class="ing-ben">Natural brightening, oil control. Rich in Vitamin C and citric acid — brightens complexion, controls excess oil, and fades dark spots naturally.</p>
+          <div class="ing-found">Lemon &amp; Honey Soap</div>
+        </div>
+      </div>
+
+      <div class="ing-card reveal d3">
+        <div class="ing-img">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🌺</span><span class="ph-label">images/ingredients/natural-oils.jpg</span></div>
+            <img src="images/ingredients/natural-oils.jpg" alt="Natural Oils" loading="lazy">
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Natural Oils</div>
+          <p class="ing-ben">Nourish, protect, refresh. Premium oil blends chosen for their ability to nourish the skin barrier and leave a healthy, natural, lasting finish.</p>
+          <div class="ing-found">Golden Glow Body Oil · All Products</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section class="offers" id="offers">
+  <div class="offers-inner">
+    <div class="reveal">
+      <div class="sec-label">Special Deals</div>
+      <h2 class="sec-title">Best Value<br><em>Bundles</em></h2>
+      <p class="sec-body">Give your skin a full natural routine without breaking your budget. Our bundles pair products that work beautifully together.</p>
+    </div>
+    <div class="offer-cards reveal d2">
+      <div class="offer-card">
+        <div><div class="offer-lbl">Buy Any 3 Soaps</div><div class="offer-sublbl">Mix &amp; match your favourites</div></div>
+        <div class="offer-price">TZS 14,000<small>Bundle price</small></div>
+      </div>
+      <div class="offer-card">
+        <div><div class="offer-lbl">Special Soap Bundle</div><div class="offer-sublbl">Curated glow combination</div></div>
+        <div class="offer-price">TZS 22,000<small>Bundle price</small></div>
+      </div>
+      <div class="offer-ws">
+        <div>
+          <div class="offer-ws-text">Wholesale &amp; Bulk Orders</div>
+          <div class="offer-ws-sub">Retailers, spas, and distributors welcome</div>
+        </div>
+        <a href="https://wa.me/255798538366" class="offer-ws-cta" target="_blank">Contact Us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     TESTIMONIALS
+     images/testimonials/amina.jpg
+     images/testimonials/priya.jpg
+     images/testimonials/zawadi.jpg
+════════════════════════════════════ -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-inner">
+    <div class="test-hd">
+      <div class="sec-label c reveal" style="color:rgba(196,136,74,.72)">Community Love</div>
+      <h2 class="sec-title reveal d1" style="text-align:center;color:var(--cream)">What Our Customers<br><em style="color:var(--gold-light)">Are Saying</em></h2>
+    </div>
+    <div class="test-slider reveal">
+      <div class="test-track" id="ttrack">
+
+        <div class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-text">"Finally a soap that actually works on my skin without causing dryness. The turmeric soap has genuinely transformed my complexion — I'm glowing every day."</p>
+          <div class="test-author-row">
+            <div class="test-avatar">
+              <div class="img-ph">
+                <div class="ph-inner" style="gap:.2rem"><span style="font-size:.8rem;opacity:.3">👤</span><span class="ph-label" style="font-size:.5rem">amina.jpg</span></div>
+                <img src="images/testimonials/amina.jpg" alt="Amina M." loading="lazy">
+              </div>
+            </div>
+            <div><div class="test-author">Amina M.</div><div class="test-loc">Dar es Salaam, Tanzania</div></div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-text">"I ordered from the UK and was amazed by the quality. Natural, effective, and smells absolutely divine. The coffee scrub is now a permanent part of my routine."</p>
+          <div class="test-author-row">
+            <div class="test-avatar">
+              <div class="img-ph">
+                <div class="ph-inner" style="gap:.2rem"><span style="font-size:.8rem;opacity:.3">👤</span><span class="ph-label" style="font-size:.5rem">priya.jpg</span></div>
+                <img src="images/testimonials/priya.jpg" alt="Priya K." loading="lazy">
+              </div>
+            </div>
+            <div><div class="test-author">Priya K.</div><div class="test-loc">London, United Kingdom</div></div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-text">"The Shea Butter Soap is incredible for dry skin. I've tried many African skincare products and this one stands out — pure, honest, and genuinely effective."</p>
+          <div class="test-author-row">
+            <div class="test-avatar">
+              <div class="img-ph">
+                <div class="ph-inner" style="gap:.2rem"><span style="font-size:.8rem;opacity:.3">👤</span><span class="ph-label" style="font-size:.5rem">zawadi.jpg</span></div>
+                <img src="images/testimonials/zawadi.jpg" alt="Zawadi N." loading="lazy">
+              </div>
+            </div>
+            <div><div class="test-author">Zawadi N.</div><div class="test-loc">Nairobi, Kenya</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="sdots" id="sdots">
+      <button class="sdot active" onclick="slide(0)"></button>
+      <button class="sdot" onclick="slide(1)"></button>
+      <button class="sdot" onclick="slide(2)"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     DELIVERY
+     images/delivery/local-delivery.jpg
+     images/delivery/worldwide-shipping.jpg
+     images/delivery/wholesale-orders.jpg
+════════════════════════════════════ -->
+<section class="delivery" id="delivery">
+  <div class="delivery-inner">
+    <div class="del-hd">
+      <div class="sec-label c reveal">Delivery &amp; Shipping</div>
+      <h2 class="sec-title reveal d1" style="text-align:center">We Bring Zanzibar's Finest<br><em>to Your Doorstep</em></h2>
+    </div>
+    <div class="del-grid">
+
+      <div class="del-card reveal d1">
+        <div class="del-img">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🛵</span><span class="ph-label">images/delivery/local-delivery.jpg<br>Local delivery photo (Dar es Salaam)</span></div>
+            <img src="images/delivery/local-delivery.jpg" alt="Local delivery Tanzania" loading="lazy">
+          </div>
+        </div>
+        <div class="del-body">
+          <div class="del-icon">🛵</div>
+          <div class="del-title">Local Delivery</div>
+          <p class="del-desc">Based in Tanzania? We offer fast, reliable local delivery to your home or business within Dar es Salaam.</p>
+        </div>
+      </div>
+
+      <div class="del-card reveal d2">
+        <div class="del-img">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">✈️</span><span class="ph-label">images/delivery/worldwide-shipping.jpg<br>Worldwide shipping photo</span></div>
+            <img src="images/delivery/worldwide-shipping.jpg" alt="Worldwide shipping" loading="lazy">
+          </div>
+        </div>
+        <div class="del-body">
+          <div class="del-icon">✈️</div>
+          <div class="del-title">Worldwide Shipping</div>
+          <p class="del-desc">Great skincare knows no borders. We ship to any country in the world. Contact us for shipping rates to your destination.</p>
+        </div>
+      </div>
+
+      <div class="del-card reveal d3">
+        <div class="del-img">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">📦</span><span class="ph-label">images/delivery/wholesale-orders.jpg<br>Bulk/wholesale orders photo</span></div>
+            <img src="images/delivery/wholesale-orders.jpg" alt="Wholesale orders" loading="lazy">
+          </div>
+        </div>
+        <div class="del-body">
+          <div class="del-icon">📦</div>
+          <div class="del-title">Wholesale Orders</div>
+          <p class="del-desc">Retailers, spas, and distributors welcome. Competitive bulk pricing and consistent quality supply — locally and internationally.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     INSTAGRAM
+     images/instagram/ig-1.jpg through ig-10.jpg
+     (product shots, lifestyle, behind-the-scenes)
+════════════════════════════════════ -->
+<section class="instagram" id="instagram">
+  <div class="instagram-inner reveal">
+    <div class="ig-left">
+      <div class="ig-handle">@zanzibarsoap</div>
+      <div class="sec-label" style="margin-top:.5rem">Follow Our Journey</div>
+      <p class="sec-body" style="color:rgba(247,237,216,.5);margin-top:.5rem">Join <strong style="color:var(--cream)">1,415+</strong> skincare lovers on Instagram. Daily tips, product updates, and the beauty of natural skincare from Zanzibar.</p>
+      <a href="https://instagram.com/zanzibarsoap" target="_blank" class="btn-primary" style="margin-top:1.5rem;display:inline-block;font-size:.78rem">Follow on Instagram</a>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-box"><div class="img-ph"><div class="ph-inner"><span class="ph-icon" style="font-size:1.4rem">📷</span><span class="ph-label" style="font-size:.52rem">ig-1.jpg</span></div><img src="images/instagram/ig-1.jpg" alt="Instagram 1" loading="lazy"></div></div>
+      <div class="ig-box"><div class="img-ph"><div class="ph-inner"><span class="ph-icon" style="font-size:1.4rem">📷</span><span class="ph-label" style="font-size:.52rem">ig-2.jpg</span></div><img src="images/instagram/ig-2.jpg" alt="Instagram 2" loading="lazy"></div></div>
+      <div class="ig-box"><div class="img-ph"><div class="ph-inner"><span class="ph-icon" style="font-size:1.4rem">📷</span><span class="ph-label" style="font-size:.52rem">ig-3.jpg</span></div><img src="images/instagram/ig-3.jpg" alt="Instagram 3" loading="lazy"></div></div>
+      <div class="ig-box"><div class="img-ph"><div class="ph-inner"><span class="ph-icon" style="font-size:1.4rem">📷</span><span class="ph-label" style="font-size:.52rem">ig-4.jpg</span></div><img src="images/instagram/ig-4.jpg" alt="Instagram 4" loading="lazy"></div></div>
+      <div class="ig-box"><div class="img-ph"><div class="ph-inner"><span class="ph-icon" style="font-size:1.4rem">📷</span><span class="ph-label" style="font-size:.52rem">ig-5.jpg</span></div><img src="images/instagram/ig-5.jpg" alt="Instagram 5" loading="lazy"></div></div>
+      <div class="ig-box"><div class="img-ph"><div class="ph-inner"><span class="ph-icon" style="font-size:1.4rem">📷</span><span class="ph-label" style="font-size:.52rem">ig-6.jpg</span></div><img src="images/instagram/ig-6.jpg" alt="Instagram 6" loading="lazy"></div></div>
+      <div class="ig-box"><div class="img-ph"><div class="ph-inner"><span class="ph-icon" style="font-size:1.4rem">📷</span><span class="ph-label" style="font-size:.52rem">ig-7.jpg</span></div><img src="images/instagram/ig-7.jpg" alt="Instagram 7" loading="lazy"></div></div>
+      <div class="ig-box"><div class="img-ph"><div class="ph-inner"><span class="ph-icon" style="font-size:1.4rem">📷</span><span class="ph-label" style="font-size:.52rem">ig-8.jpg</span></div><img src="images/instagram/ig-8.jpg" alt="Instagram 8" loading="lazy"></div></div>
+      <div class="ig-box"><div class="img-ph"><div class="ph-inner"><span class="ph-icon" style="font-size:1.4rem">📷</span><span class="ph-label" style="font-size:.52rem">ig-9.jpg</span></div><img src="images/instagram/ig-9.jpg" alt="Instagram 9" loading="lazy"></div></div>
+      <div class="ig-box"><div class="img-ph"><div class="ph-inner"><span class="ph-icon" style="font-size:1.4rem">📷</span><span class="ph-label" style="font-size:.52rem">ig-10.jpg</span></div><img src="images/instagram/ig-10.jpg" alt="Instagram 10" loading="lazy"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     CONTACT CTA
+     images/cta-bg.jpg  (Zanzibar coastline / nature — used as subtle background)
+════════════════════════════════════ -->
+<section class="cta" id="contact">
+  <div class="cta-bg">
+    <div class="img-ph">
+      <div class="ph-inner"><span class="ph-icon">🌊</span><span class="ph-label">images/cta-bg.jpg<br>Zanzibar coast / nature backdrop</span></div>
+      <img src="images/cta-bg.jpg" alt="Zanzibar background" loading="lazy">
+    </div>
+  </div>
+  <div class="blob" style="width:700px;height:700px;background:rgba(143,174,139,.06);top:-300px;left:-250px;animation-duration:22s;z-index:1"></div>
+  <div class="blob" style="width:500px;height:500px;background:rgba(196,136,74,.05);bottom:-200px;right:-130px;animation-duration:18s;z-index:1"></div>
+  <div class="cta-inner">
+    <div class="sec-label c reveal" style="color:rgba(196,136,74,.72)">Get in Touch</div>
+    <h2 class="cta-title reveal d1">Ready to Glow?<br><em>We'd Love to Help.</em></h2>
+    <p class="cta-sub reveal d2">Whether you're ready to order, want to know more about our products, or are interested in wholesale — reach us through any channel below.</p>
+    <div class="cta-contacts reveal d3">
+      <div class="cta-ci">
+        <span class="cta-lbl">📞 Call / WhatsApp</span>
+        <span class="cta-val">0798 538 366</span>
+        <span class="cta-val">+255 62 123 4567</span>
+      </div>
+      <div class="cta-ci">
+        <span class="cta-lbl">📧 Email</span>
+        <span class="cta-val">zanzibarsoap@gmail.com</span>
+      </div>
+      <div class="cta-ci">
+        <span class="cta-lbl">📍 Location</span>
+        <span class="cta-val">Dar es Salaam, Tanzania</span>
+      </div>
+    </div>
+    <div class="cta-btns reveal d4">
+      <a href="https://wa.me/255798538366" class="btn-wa" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Order on WhatsApp
+      </a>
+      <a href="mailto:zanzibarsoap@gmail.com" class="btn-primary">Send an Email</a>
+      <a href="https://instagram.com/zanzibarsoap" class="btn-ghost" target="_blank">@zanzibarsoap</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <span class="ft-logo">Zanzibar<span>.</span>Soap</span>
+      <p class="ft-tag">Natural, effective, and proudly African skincare, delivered with love from Zanzibar to the world.</p>
+      <div class="ft-socials">
+        <a href="https://instagram.com/zanzibarsoap" class="ft-si" target="_blank" title="Instagram">📷</a>
+        <a href="https://wa.me/255798538366" class="ft-si" target="_blank" title="WhatsApp">💬</a>
+        <a href="mailto:zanzibarsoap@gmail.com" class="ft-si" target="_blank" title="Email">✉️</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-title">Products</div>
+      <ul class="ft-links">
+        <li><a href="#products">Bar Soaps</a></li>
+        <li><a href="#products">Scrubs</a></li>
+        <li><a href="#products">Body Oils</a></li>
+        <li><a href="#offers">Bundle Deals</a></li>
+        <li><a href="#contact">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title">Company</div>
+      <ul class="ft-links">
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#ingredients">Ingredients</a></li>
+        <li><a href="#values">Our Values</a></li>
+        <li><a href="#delivery">Delivery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title">Contact</div>
+      <ul class="ft-links">
+        <li><a href="tel:+255798538366">0798 538 366</a></li>
+        <li><a href="tel:+255621234567">+255 62 123 4567</a></li>
+        <li><a href="mailto:zanzibarsoap@gmail.com">zanzibarsoap@gmail.com</a></li>
+        <li><a href="#">Dar es Salaam, Tanzania</a></li>
+        <li><a href="https://instagram.com/zanzibarsoap" target="_blank">@zanzibarsoap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <div class="ft-copy">© 2025 Zanzibar Soap Limited. All Rights Reserved.</div>
+    <div class="ft-seo">Zanzibar Soap Limited is a Tanzanian natural skincare company manufacturing 100% natural soaps, scrubs, and body oils made with turmeric, honey, shea butter, coffee, lemon, and essential oils. Ships worldwide from Tanzania.</div>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const ring=document.getElementById('curRing'),dot=document.getElementById('curDot');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  dot.style.left=mx+'px';dot.style.top=my+'px';
+});
+(function loop(){
+  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(loop);
+})();
+document.addEventListener('mousedown',()=>{ring.classList.add('click');dot.classList.add('click')});
+document.addEventListener('mouseup',()=>{ring.classList.remove('click');dot.classList.remove('click')});
+document.querySelectorAll('a,button,.prod-card,.val-card,.ing-card,.del-card,.ig-box,.offer-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.classList.add('hov');dot.classList.add('hov')});
+  el.addEventListener('mouseleave',()=>{ring.classList.remove('hov');dot.classList.remove('hov')});
+});
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+
+/* ── SCROLL REVEAL ── */
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}
+}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── PRODUCT FILTER ── */
+function filterP(cat,btn){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.prod-card').forEach(c=>{
+    const show=cat==='all'||c.dataset.cat===cat;
+    c.style.display=show?'block':'none';
+    if(show)c.classList.add('vis');
+  });
+}
+
+/* ── ORDER ── */
+function order(name){
+  window.open('https://wa.me/255798538366?text='+encodeURIComponent('Hello! I would like to order: '+name),'_blank');
+}
+
+/* ── TESTIMONIAL SLIDER ── */
+let cs=0;
+const tt=document.getElementById('ttrack'),sdots=document.querySelectorAll('.sdot');
+function slide(n){
+  cs=n;
+  tt.style.transform='translateX(-'+n*100+'%)';
+  sdots.forEach((d,i)=>d.classList.toggle('active',i===n));
+}
+setInterval(()=>slide((cs+1)%3),5500);
+
+/* ── HERO PARALLAX ── */
+window.addEventListener('scroll',()=>{
+  const hc=document.querySelector('.hero-content');
+  if(hc&&scrollY<innerHeight){
+    hc.style.transform='translateY('+scrollY*.25+'px)';
+    hc.style.opacity=Math.max(0,1-(scrollY/(innerHeight*.7)));
+  }
+});
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  const t=document.querySelector(a.getAttribute('href'));
+  if(t)t.scrollIntoView({behavior:'smooth'});
+}));
+
+/* ── VIDEO PLAY BUTTON (process section) ── */
+document.querySelectorAll('.vid-play').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const v=btn.closest('.vid-ph').querySelector('video');
+    if(v){btn.closest('.vid-inner').style.opacity='0';v.style.zIndex='2';v.play()}
+  });
+});
+</script>
+</body>
+</html>

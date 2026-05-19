@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zanzibar Soap Limited | 100% Natural Skincare from Tanzania</title>
+<meta name="description" content="Discover premium natural skincare made in Zanzibar, Tanzania. Shop turmeric soaps, coffee scrubs, shea butter bars, and golden body oils. Chemical-free. Worldwide shipping. Proudly African.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --forest:#1B3A2D;--forest-deep:#0F2218;--forest-mid:#2D5A42;
+  --cream:#F7EDD8;--cream-deep:#EDD9B5;--gold:#C4884A;--gold-light:#E8B06A;
+  --sage:#8FAE8B;--white:#FFFDF8;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:#1a1a1a;overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+.cursor{width:12px;height:12px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s;mix-blend-mode:multiply}
+.cursor-follower{width:40px;height:40px;border:1.5px solid var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease;opacity:.5}
+.cursor.hov{width:20px;height:20px;background:var(--forest)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 4rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:rgba(247,237,216,.88);border-bottom:1px solid rgba(196,136,74,.2);transition:all .4s}
+nav.scrolled{padding:.8rem 4rem;background:rgba(247,237,216,.96)}
+.nav-logo{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--forest);letter-spacing:-.02em}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--forest);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--forest);color:var(--cream);padding:.6rem 1.6rem;border-radius:50px;font-size:.8rem;font-weight:500;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:all .3s}
+.nav-cta:hover{background:var(--gold);transform:translateY(-2px)}
+
+/* PARTICLES */
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.particle{position:absolute;border-radius:50%;animation:floatP linear infinite}
+@keyframes floatP{0%{transform:translateY(100vh) rotate(0);opacity:0}10%{opacity:.1}90%{opacity:.1}100%{transform:translateY(-120px) rotate(360deg);opacity:0}}
+
+/* BLOBS */
+.blob{position:absolute;border-radius:60% 40% 70% 30%/50% 60% 40% 50%;animation:morphBlob ease-in-out infinite;pointer-events:none}
+@keyframes morphBlob{0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 50%}25%{border-radius:40% 60% 30% 70%/60% 40% 50% 50%}50%{border-radius:50% 50% 60% 40%/40% 70% 30% 60%}75%{border-radius:70% 30% 40% 60%/50% 40% 60% 50%}}
+
+/* ANIMATIONS */
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeSlideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes expandRing{0%{transform:translate(-50%,-50%) scale(.3);opacity:.5}100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}}
+@keyframes blinkDot{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes scrollLine{0%,100%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@keyframes floatWA{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes cardAppear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulseRing{0%,100%{opacity:.3;transform:translate(-50%,-50%) scale(1)}50%{opacity:.6;transform:translate(-50%,-50%) scale(1.05)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;background:var(--forest);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-vbg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(143,174,139,.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(196,136,74,.12) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(27,58,45,.8) 0%,var(--forest) 70%);z-index:1}
+.ring{position:absolute;border-radius:50%;border:1px solid;animation:expandRing ease-out infinite;pointer-events:none;z-index:2}
+.hero-content{position:relative;z-index:5;text-align:center;padding:2rem;max-width:900px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(196,136,74,.15);border:1px solid rgba(196,136,74,.3);color:var(--gold-light);padding:.4rem 1.2rem;border-radius:50px;font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2rem;animation:fadeSlideDown 1s ease forwards;opacity:0}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block;animation:blinkDot 1.5s ease infinite}
+.hero-title{font-family:var(--serif);font-size:clamp(3.5rem,8vw,7rem);font-weight:300;color:var(--cream);line-height:1;letter-spacing:-.02em;margin-bottom:1.5rem;animation:fadeSlideUp 1.2s ease .3s forwards;opacity:0}
+.hero-title em{font-style:italic;color:var(--gold-light)}
+.hero-tagline{font-size:.95rem;color:rgba(247,237,216,.55);letter-spacing:.18em;text-transform:uppercase;font-weight:300;margin-bottom:2.5rem;animation:fadeSlideUp 1.2s ease .5s forwards;opacity:0}
+.hero-sub{font-size:1.05rem;color:rgba(247,237,216,.72);max-width:580px;margin:0 auto 3rem;line-height:1.85;font-weight:300;animation:fadeSlideUp 1.2s ease .7s forwards;opacity:0}
+.hero-actions{display:flex;gap:1.2rem;justify-content:center;align-items:center;animation:fadeSlideUp 1.2s ease .9s forwards;opacity:0}
+.btn-primary{background:var(--gold);color:var(--white);padding:.9rem 2.5rem;border-radius:50px;font-size:.83rem;font-weight:500;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:all .3s;display:inline-block;position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.18);transform:translateX(-100%);transition:transform .4s}
+.btn-primary:hover::before{transform:translateX(0)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(196,136,74,.4)}
+.btn-ghost{color:var(--cream);border:1px solid rgba(247,237,216,.3);padding:.9rem 2.5rem;border-radius:50px;font-size:.83rem;font-weight:400;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:all .3s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.scroll-ind{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(247,237,216,.35);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;animation:fadeSlideUp 1.2s ease 1.4s forwards;opacity:0;z-index:5}
+.scroll-line{width:1px;height:55px;background:linear-gradient(to bottom,transparent,rgba(196,136,74,.6));animation:scrollLine 2s ease-in-out infinite}
+
+/* TRUST BAR */
+.trust-bar{background:var(--cream);padding:1.1rem 4rem;display:flex;align-items:center;justify-content:center;gap:2.5rem;border-bottom:1px solid rgba(196,136,74,.15);flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.55rem;font-size:.77rem;font-weight:500;color:var(--forest);letter-spacing:.05em;white-space:nowrap}
+.trust-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.trust-div{width:1px;height:20px;background:rgba(196,136,74,.25);flex-shrink:0}
+
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;background:var(--gold);padding:.75rem 0}
+.marquee-track{display:flex;animation:marquee 28s linear infinite;white-space:nowrap}
+.mq-item{padding:0 2.5rem;font-size:.73rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--white);display:flex;align-items:center;gap:1.5rem}
+.mq-item::after{content:'✦';color:rgba(255,255,255,.45)}
+
+/* SECTION HELPERS */
+section{position:relative}
+.sec-label{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;display:flex;align-items:center;gap:.8rem}
+.sec-label::before{content:'';width:28px;height:1px;background:var(--gold);display:inline-block}
+.sec-label.centered{justify-content:center}
+.sec-label.centered::before{display:none}
+.sec-title{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.4rem);font-weight:300;line-height:1.12;color:var(--forest);margin-bottom:1.6rem}
+.sec-title em{font-style:italic;color:var(--gold)}
+.sec-body{font-size:.97rem;line-height:1.9;color:#4a4a4a;font-weight:300;margin-bottom:1.4rem}
+.wave{display:block;width:100%}
+
+/* ===== ABOUT ===== */
+.about{padding:8rem 4rem;background:var(--white);overflow:hidden}
+.about-bg{position:absolute;font-family:var(--serif);font-size:18vw;font-weight:600;color:rgba(27,58,45,.028);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;user-select:none}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.about-visual{position:relative;height:500px}
+.about-main{position:absolute;top:0;left:0;right:80px;bottom:80px;background:var(--forest);border-radius:40px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.about-float{position:absolute;bottom:0;right:0;width:200px;height:200px;background:var(--cream);border:2px solid var(--cream-deep);border-radius:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;animation:floatCard 4s ease-in-out infinite;box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.float-num{font-family:var(--serif);font-size:3rem;font-weight:600;color:var(--forest);line-height:1}
+.float-lbl{font-size:.72rem;font-weight:500;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.float-sub{font-size:.68rem;color:#999;text-align:center;padding:0 1rem}
+
+/* ===== VALUES ===== */
+.values{padding:8rem 4rem;background:var(--forest);overflow:hidden}
+.values-inner{max-width:1200px;margin:0 auto}
+.values-hd{text-align:center;margin-bottom:5rem}
+.val-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.val-card{background:rgba(247,237,216,.05);border:1px solid rgba(196,136,74,.2);border-radius:24px;padding:2.5rem 2rem;transition:all .4s;position:relative;overflow:hidden}
+.val-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.val-card:hover{background:rgba(247,237,216,.1);transform:translateY(-8px)}
+.val-card:hover::before{transform:scaleX(1)}
+.val-icon{font-size:2.4rem;margin-bottom:1.1rem;display:block}
+.val-name{font-family:var(--serif);font-size:1.35rem;color:var(--cream);margin-bottom:.75rem}
+.val-desc{font-size:.86rem;color:rgba(247,237,216,.52);line-height:1.7;font-weight:300}
+
+/* ===== PRODUCTS ===== */
+.products{padding:8rem 4rem;background:var(--cream);overflow:hidden}
+.products-inner{max-width:1300px;margin:0 auto}
+.prod-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem}
+.view-all{font-size:.78rem;font-weight:500;color:var(--forest);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--forest);padding-bottom:2px;transition:color .3s,border-color .3s}
+.view-all:hover{color:var(--gold);border-color:var(--gold)}
+.prod-tabs{display:flex;gap:.5rem;margin-bottom:3rem}
+.tab{background:transparent;border:1px solid rgba(196,136,74,.3);color:var(--forest);padding:.5rem 1.4rem;border-radius:50px;font-size:.78rem;font-weight:500;cursor:pointer;letter-spacing:.05em;transition:all .3s;font-family:var(--sans)}
+.tab.active,.tab:hover{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.prod-card{background:var(--white);border-radius:28px;overflow:hidden;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;cursor:pointer;display:none}
+.prod-card.vis{display:block;animation:cardAppear .4s ease forwards}
+.prod-card:hover{transform:translateY(-12px);box-shadow:0 30px 80px rgba(27,58,45,.15)}
+.prod-vis{height:220px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;position:relative;overflow:hidden}
+.prod-body{padding:1.8rem}
+.prod-cat{font-size:.63rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.prod-name{font-family:var(--serif);font-size:1.28rem;color:var(--forest);margin-bottom:.55rem}
+.prod-desc{font-size:.81rem;color:#888;line-height:1.6;margin-bottom:1.2rem}
+.prod-footer{display:flex;align-items:center;justify-content:space-between}
+.prod-price{font-family:var(--serif);font-size:1.18rem;font-weight:600;color:var(--forest)}
+.prod-price small{font-size:.72rem;font-weight:400;color:#bbb;display:block}
+.prod-add{width:38px;height:38px;background:var(--forest);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--cream);font-size:1.3rem;transition:all .3s;cursor:pointer;border:none;font-family:var(--sans)}
+.prod-add:hover{background:var(--gold);transform:rotate(90deg)}
+.prod-badge{position:absolute;top:1rem;right:1rem;background:var(--forest);color:var(--cream);padding:.22rem .75rem;border-radius:50px;font-size:.62rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;z-index:2}
+.prod-badge.g{background:var(--gold)}
+.pg{background:linear-gradient(135deg,#e8f0eb,#c5d9c8)}
+.py{background:linear-gradient(135deg,#fdf5d9,#f5e4a0)}
+.pb{background:linear-gradient(135deg,#f0e6d8,#d9c0a0)}
+.pbl{background:linear-gradient(135deg,#e0eef5,#b8d4e8)}
+.po{background:linear-gradient(135deg,#e8edd5,#c8d4a0)}
+.pa{background:linear-gradient(135deg,#fde8d0,#f5c090)}
+.pr{background:linear-gradient(135deg,#fde8ed,#f5b0c0)}
+.pd{background:linear-gradient(135deg,#d8e8e0,#a0c5b5)}
+
+/* ===== INGREDIENTS ===== */
+.ingredients{padding:8rem 4rem;background:var(--white);overflow:hidden}
+.ingredients-inner{max-width:1200px;margin:0 auto}
+.ing-hd{text-align:center;margin-bottom:5rem}
+.ing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.ing-card{border:1px solid rgba(196,136,74,.2);border-radius:24px;padding:2.5rem;position:relative;overflow:hidden;transition:all .4s;background:var(--white)}
+.ing-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0;background:var(--forest);transition:height .5s cubic-bezier(.4,0,.2,1);z-index:0}
+.ing-card:hover::after{height:100%}
+.ing-inner{position:relative;z-index:1}
+.ing-emoji{font-size:3rem;display:block;margin-bottom:1.1rem;transition:transform .4s}
+.ing-card:hover .ing-emoji{transform:scale(1.2) rotate(10deg)}
+.ing-name{font-family:var(--serif);font-size:1.45rem;color:var(--forest);margin-bottom:.7rem;transition:color .3s}
+.ing-ben{font-size:.86rem;color:#666;line-height:1.7;margin-bottom:.9rem;transition:color .3s;font-weight:300}
+.ing-found{font-size:.68rem;font-weight:500;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+.ing-card:hover .ing-name,.ing-card:hover .ing-ben{color:var(--cream)}
+.ing-card:hover .ing-found{color:rgba(196,136,74,.85)}
+
+/* ===== OFFERS ===== */
+.offers{padding:8rem 4rem;background:var(--cream);overflow:hidden}
+.offers-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.offer-cards{display:flex;flex-direction:column;gap:1.1rem}
+.offer-card{background:var(--white);border-radius:20px;padding:1.8rem 2rem;display:flex;align-items:center;justify-content:space-between;border:1px solid transparent;transition:all .3s}
+.offer-card:hover{border-color:var(--gold);transform:translateX(8px)}
+.offer-lbl{font-family:var(--serif);font-size:1.18rem;color:var(--forest)}
+.offer-sublbl{font-size:.78rem;color:#aaa;margin-top:.3rem}
+.offer-price{font-family:var(--serif);font-size:1.8rem;font-weight:600;color:var(--gold);text-align:right}
+.offer-price small{font-size:.72rem;font-family:var(--sans);color:#bbb;font-weight:300;display:block}
+.offer-ws{background:var(--forest);border-radius:20px;padding:1.8rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.offer-ws-text{color:var(--cream);font-family:var(--serif);font-size:1.1rem}
+.offer-ws-cta{background:var(--gold);color:var(--white);padding:.6rem 1.4rem;border-radius:50px;font-size:.73rem;font-weight:500;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;transition:all .3s}
+.offer-ws-cta:hover{background:var(--gold-light);transform:scale(1.05)}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{padding:8rem 4rem;background:var(--forest-deep);overflow:hidden}
+.testimonials-inner{max-width:1100px;margin:0 auto}
+.test-hd{text-align:center;margin-bottom:5rem}
+.test-slider{position:relative;overflow:hidden}
+.test-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.test-card{min-width:100%;padding:3rem;background:rgba(247,237,216,.05);border:1px solid rgba(196,136,74,.2);border-radius:28px;text-align:center}
+.test-stars{font-size:1.2rem;margin-bottom:1.5rem;letter-spacing:.1em}
+.test-text{font-family:var(--serif);font-size:1.5rem;font-weight:300;font-style:italic;color:var(--cream);line-height:1.6;max-width:680px;margin:0 auto 2rem}
+.test-author{font-size:.78rem;font-weight:500;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
+.test-loc{font-size:.73rem;color:rgba(247,237,216,.38);margin-top:.3rem}
+.slider-dots{display:flex;justify-content:center;gap:.8rem;margin-top:3rem}
+.sdot{width:8px;height:8px;border-radius:50%;background:rgba(247,237,216,.3);border:none;cursor:pointer;transition:all .3s}
+.sdot.active{background:var(--gold);width:24px;border-radius:4px}
+
+/* ===== DELIVERY ===== */
+.delivery{padding:8rem 4rem;background:var(--white);overflow:hidden}
+.delivery-inner{max-width:1200px;margin:0 auto}
+.del-hd{text-align:center;margin-bottom:5rem}
+.del-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.del-card{text-align:center;padding:3rem 2rem;border-radius:24px;background:var(--cream);transition:all .4s}
+.del-card:hover{background:var(--forest)}
+.del-card:hover .del-title,.del-card:hover .del-desc{color:var(--cream)}
+.del-card:hover .del-icon{background:rgba(196,136,74,.2)}
+.del-icon{width:78px;height:78px;background:rgba(27,58,45,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2rem;transition:background .4s}
+.del-title{font-family:var(--serif);font-size:1.38rem;color:var(--forest);margin-bottom:.75rem;transition:color .4s}
+.del-desc{font-size:.86rem;color:#888;line-height:1.7;font-weight:300;transition:color .4s}
+
+/* ===== INSTAGRAM ===== */
+.instagram{padding:6rem 4rem;background:var(--cream);overflow:hidden}
+.instagram-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:4rem}
+.ig-left{flex:1}
+.ig-handle{font-family:var(--serif);font-size:2.4rem;font-style:italic;color:var(--forest);margin-bottom:.75rem}
+.ig-stat{font-size:.83rem;color:#999;margin-bottom:1.5rem;line-height:1.6}
+.ig-stat strong{color:var(--forest)}
+.ig-grid{flex:2;display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem}
+.ig-box{aspect-ratio:1;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2rem;transition:transform .3s;cursor:pointer}
+.ig-box:hover{transform:scale(1.06) rotate(2deg)}
+
+/* ===== CONTACT CTA ===== */
+.cta{padding:8rem 4rem;background:var(--forest);text-align:center;overflow:hidden}
+.cta-inner{max-width:800px;margin:0 auto;position:relative;z-index:2}
+.cta-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:var(--cream);line-height:1.08;margin-bottom:1.5rem}
+.cta-title em{font-style:italic;color:var(--gold-light)}
+.cta-sub{font-size:.97rem;color:rgba(247,237,216,.58);max-width:500px;margin:0 auto 3rem;line-height:1.85;font-weight:300}
+.cta-contacts{display:flex;justify-content:center;gap:3rem;margin-bottom:3rem;flex-wrap:wrap}
+.cta-ci{display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.cta-lbl{font-size:.63rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.cta-val{font-size:.93rem;color:var(--cream);font-weight:300}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-wa{background:#25D366;color:#fff;padding:.9rem 2.5rem;border-radius:50px;font-size:.83rem;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:.6rem;transition:all .3s}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,.4)}
+
+/* ===== FOOTER ===== */
+footer{background:var(--forest-deep);padding:4rem 4rem 2rem}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3rem}
+.ft-logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--cream);margin-bottom:.9rem}
+.ft-logo span{color:var(--gold)}
+.ft-tag{font-size:.83rem;color:rgba(247,237,216,.45);line-height:1.7;font-weight:300;max-width:270px;margin-bottom:1.5rem}
+.ft-socials{display:flex;gap:.8rem}
+.ft-si{width:36px;height:36px;border:1px solid rgba(196,136,74,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--cream);text-decoration:none;font-size:.78rem;transition:all .3s}
+.ft-si:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-3px)}
+.ft-col-title{font-size:.68rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.ft-links a{font-size:.83rem;color:rgba(247,237,216,.45);text-decoration:none;transition:color .3s;font-weight:300}
+.ft-links a:hover{color:var(--cream)}
+.ft-bottom{border-top:1px solid rgba(247,237,216,.08);padding-top:2rem;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.ft-copy{font-size:.73rem;color:rgba(247,237,216,.28)}
+.ft-seo{font-size:.68rem;color:rgba(247,237,216,.14);max-width:550px;line-height:1.6}
+
+/* FLOATING WA */
+.fwa{position:fixed;bottom:2.5rem;right:2.5rem;z-index:500;display:flex;align-items:center;gap:.8rem;background:#25D366;color:#fff;padding:.8rem 1.4rem;border-radius:50px;text-decoration:none;font-size:.78rem;font-weight:500;box-shadow:0 8px 30px rgba(37,211,102,.4);transition:all .3s;animation:floatWA 3s ease-in-out infinite}
+.fwa:hover{box-shadow:0 15px 50px rgba(37,211,102,.5);transform:scale(1.05)}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cf"></div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/255798538366" class="fwa" target="_blank">💬 Order on WhatsApp</a>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Zanzibar<span>.</span>Soap</div>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#ingredients">Ingredients</a></li>
+    <li><a href="#delivery">Delivery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Shop Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-vbg"></div>
+  <!-- Animated rings -->
+  <div class="ring" style="width:420px;height:420px;border-color:rgba(196,136,74,.12);left:50%;top:50%;animation-duration:4s;animation-delay:0s"></div>
+  <div class="ring" style="width:420px;height:420px;border-color:rgba(196,136,74,.09);left:50%;top:50%;animation-duration:4s;animation-delay:1.35s"></div>
+  <div class="ring" style="width:420px;height:420px;border-color:rgba(196,136,74,.06);left:50%;top:50%;animation-duration:4s;animation-delay:2.7s"></div>
+  <!-- Blobs -->
+  <div class="blob" style="width:520px;height:520px;background:rgba(143,174,139,.07);top:-130px;right:-170px;animation-duration:13s"></div>
+  <div class="blob" style="width:370px;height:370px;background:rgba(196,136,74,.06);bottom:-110px;left:-90px;animation-duration:17s;animation-delay:4s"></div>
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">🌿 Natural · Organic · Proudly Tanzanian</div>
+    <h1 class="hero-title">Natural Beauty<br><em>Born in Zanzibar</em></h1>
+    <p class="hero-tagline">It's not just soap, it's our pride.</p>
+    <p class="hero-sub">We craft 100% natural soaps, scrubs, and body oils using Africa's finest ingredients — turmeric, honey, shea butter, coffee, and more. Gentle on your skin. Kind to your confidence.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">Explore Products</a>
+      <a href="#about" class="btn-ghost">Our Story</a>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-dot"></span> 100% Natural</div>
+  <div class="trust-div"></div>
+  <div class="trust-item"><span class="trust-dot"></span> No Harsh Chemicals</div>
+  <div class="trust-div"></div>
+  <div class="trust-item"><span class="trust-dot"></span> All Skin Types</div>
+  <div class="trust-div"></div>
+  <div class="trust-item"><span class="trust-dot"></span> Made in Tanzania</div>
+  <div class="trust-div"></div>
+  <div class="trust-item"><span class="trust-dot"></span> Worldwide Shipping</div>
+  <div class="trust-div"></div>
+  <div class="trust-item"><span class="trust-dot"></span> 1,400+ Happy Customers</div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="mq-item">Natural Skincare</div><div class="mq-item">Zanzibar Inspired</div><div class="mq-item">Turmeric & Honey</div><div class="mq-item">Shea Butter</div><div class="mq-item">Coffee Scrub</div><div class="mq-item">Ships Worldwide</div><div class="mq-item">African Heritage</div><div class="mq-item">No Chemicals</div>
+    <div class="mq-item">Natural Skincare</div><div class="mq-item">Zanzibar Inspired</div><div class="mq-item">Turmeric & Honey</div><div class="mq-item">Shea Butter</div><div class="mq-item">Coffee Scrub</div><div class="mq-item">Ships Worldwide</div><div class="mq-item">African Heritage</div><div class="mq-item">No Chemicals</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-bg">Zanzibar</div>
+  <div class="about-inner">
+    <div>
+      <div class="sec-label reveal">Our Story</div>
+      <h2 class="sec-title reveal d1">It's Not Just Soap.<br><em>It's Our Pride.</em></h2>
+      <p class="sec-body reveal d2">There's something special about Zanzibar. Its spices, its ancient trade routes that carried the finest botanicals across the world. For us, it was never just a name — it was the inspiration behind everything we make.</p>
+      <p class="sec-body reveal d3">We are a Tanzanian beauty company, manufacturing 100% natural skincare products that are affordable, honest, and deeply effective. Every product is a tribute to the richness of our land and a commitment to the health of your skin.</p>
+      <a href="#products" class="btn-primary reveal d4" style="margin-top:.5rem">Discover Our Products</a>
+    </div>
+    <div class="about-visual reveal d2">
+      <div class="about-main">
+        <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="140" cy="140" rx="90" ry="90" fill="rgba(143,174,139,.1)"/>
+          <path d="M140 60 C185 82 212 122 200 162 C188 202 162 222 140 222 C118 222 92 202 80 162 C68 122 95 82 140 60Z" fill="rgba(143,174,139,.25)" stroke="rgba(143,174,139,.45)" stroke-width="1"/>
+          <path d="M140 65 L140 218" stroke="rgba(143,174,139,.6)" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <path d="M140 102 C156 113 167 124 161 138" stroke="rgba(143,174,139,.45)" stroke-width="1" fill="none"/>
+          <path d="M140 102 C124 113 113 124 119 138" stroke="rgba(143,174,139,.45)" stroke-width="1" fill="none"/>
+          <path d="M140 133 C159 144 171 156 165 170" stroke="rgba(143,174,139,.45)" stroke-width="1" fill="none"/>
+          <path d="M140 133 C121 144 109 156 115 170" stroke="rgba(143,174,139,.45)" stroke-width="1" fill="none"/>
+          <circle cx="98" cy="88" r="7" fill="rgba(196,136,74,.3)"/>
+          <circle cx="182" cy="83" r="5" fill="rgba(196,136,74,.25)"/>
+          <circle cx="88" cy="178" r="5" fill="rgba(196,136,74,.2)"/>
+          <circle cx="192" cy="172" r="6" fill="rgba(196,136,74,.22)"/>
+          <text x="140" y="148" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" font-style="italic" fill="rgba(247,237,216,.82)">Pure Nature</text>
+          <text x="140" y="168" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="rgba(196,136,74,.75)">from Zanzibar</text>
+        </svg>
+      </div>
+      <div class="about-float">
+        <span class="float-num">100%</span>
+        <span class="float-lbl">Natural</span>
+        <span class="float-sub">No harsh chemicals, ever</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values" id="values">
+  <div class="blob" style="width:600px;height:600px;background:rgba(143,174,139,.04);top:-200px;right:-220px;animation-duration:20s"></div>
+  <div class="values-inner">
+    <div class="values-hd">
+      <div class="sec-label centered reveal" style="color:rgba(196,136,74,.75)">Why Choose Us</div>
+      <h2 class="sec-title reveal d1" style="color:var(--cream)">Our Promise<br><em>to Your Skin</em></h2>
+    </div>
+    <div class="val-grid">
+      <div class="val-card reveal d1"><span class="val-icon">🌿</span><div class="val-name">100% Natural</div><p class="val-desc">Every product is formulated with ingredients sourced from nature. No parabens, no sulfates, no compromise — ever.</p></div>
+      <div class="val-card reveal d2"><span class="val-icon">💧</span><div class="val-name">Deep Moisture</div><p class="val-desc">Our formulas go beyond surface-level cleansing. We moisturize, heal, and restore — every single wash.</p></div>
+      <div class="val-card reveal d3"><span class="val-icon">🛡️</span><div class="val-name">Safe & Gentle</div><p class="val-desc">From sensitive skin to oily skin, children to adults — gentle enough for daily use by your whole family.</p></div>
+      <div class="val-card reveal d4"><span class="val-icon">🤍</span><div class="val-name">Made with Love</div><p class="val-desc">Each product is prepared with intention, pride, and care — because your skin genuinely feels the difference.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE DIVIDER -->
+<svg class="wave" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" style="background:var(--cream);margin-top:-1px">
+  <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="#1B3A2D"/>
+</svg>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-inner">
+    <div class="prod-hd reveal">
+      <div>
+        <div class="sec-label">Our Products</div>
+        <h2 class="sec-title">Nature-Powered<br><em>Skincare.</em></h2>
+      </div>
+      <a href="#contact" class="view-all">View All →</a>
+    </div>
+    <div class="prod-tabs reveal">
+      <button class="tab active" onclick="filterP('all',this)">All</button>
+      <button class="tab" onclick="filterP('soap',this)">Soaps</button>
+      <button class="tab" onclick="filterP('scrub',this)">Scrubs</button>
+      <button class="tab" onclick="filterP('oil',this)">Body Oil</button>
+    </div>
+    <div class="prod-grid" id="pgrid">
+      <div class="prod-card vis" data-cat="soap">
+        <div class="prod-vis pg">🧼</div>
+        <div class="prod-badge">Best Seller</div>
+        <div class="prod-body">
+          <div class="prod-cat">Bar Soap</div>
+          <div class="prod-name">Luxury Shea Butter Soap</div>
+          <div class="prod-desc">Deep moisturizing, long-lasting softness — ideal for dry skin. Africa's finest moisturizer in every bar.</div>
+          <div class="prod-footer"><div class="prod-price">TZS 5,000<small>per bar</small></div><button class="prod-add" onclick="order('Luxury Shea Butter Soap')">+</button></div>
+        </div>
+      </div>
+      <div class="prod-card vis" data-cat="soap">
+        <div class="prod-vis py">🍋</div>
+        <div class="prod-body">
+          <div class="prod-cat">Bar Soap</div>
+          <div class="prod-name">Lemon & Honey Soap</div>
+          <div class="prod-desc">Natural brightening, even skin tone, silky texture. A brightening duo your skin will love.</div>
+          <div class="prod-footer"><div class="prod-price">TZS 5,000<small>per bar</small></div><button class="prod-add" onclick="order('Lemon & Honey Soap')">+</button></div>
+        </div>
+      </div>
+      <div class="prod-card vis" data-cat="soap">
+        <div class="prod-vis pa">🌟</div>
+        <div class="prod-badge g">Glow Special</div>
+        <div class="prod-body">
+          <div class="prod-cat">Bar Soap</div>
+          <div class="prod-name">Turmeric & Honey Soap</div>
+          <div class="prod-desc">Reduces dark spots, deep hydration, natural glow. The golden standard of natural skincare.</div>
+          <div class="prod-footer"><div class="prod-price">TZS 5,000<small>per bar</small></div><button class="prod-add" onclick="order('Turmeric & Honey Soap')">+</button></div>
+        </div>
+      </div>
+      <div class="prod-card vis" data-cat="soap">
+        <div class="prod-vis pbl">🌿</div>
+        <div class="prod-body">
+          <div class="prod-cat">Herbal Soap</div>
+          <div class="prod-name">Nuru Soap</div>
+          <div class="prod-desc">Fights acne, deep cleansing, ideal for oily skin. Herbal treatment for a clear, refreshed complexion.</div>
+          <div class="prod-footer"><div class="prod-price">TZS 3,000<small>per bar</small></div><button class="prod-add" onclick="order('Nuru Soap')">+</button></div>
+        </div>
+      </div>
+      <div class="prod-card vis" data-cat="soap">
+        <div class="prod-vis pr">✨</div>
+        <div class="prod-badge">Premium</div>
+        <div class="prod-body">
+          <div class="prod-cat">Cream Soap</div>
+          <div class="prod-name">Molato Beauty Cream Soap</div>
+          <div class="prod-desc">Deep hydration, gentle exfoliation, smooth skin. Luxury in every single lather.</div>
+          <div class="prod-footer"><div class="prod-price">TZS 25,000<small>per bar</small></div><button class="prod-add" onclick="order('Molato Beauty Cream Soap')">+</button></div>
+        </div>
+      </div>
+      <div class="prod-card vis" data-cat="scrub">
+        <div class="prod-vis pb">☕</div>
+        <div class="prod-badge">Top Rated</div>
+        <div class="prod-body">
+          <div class="prod-cat">Exfoliating Scrub</div>
+          <div class="prod-name">Coffee Exfoliating Scrub</div>
+          <div class="prod-desc">Removes dead skin, smooths texture, eliminates facial blemishes. Wake up your skin.</div>
+          <div class="prod-footer"><div class="prod-price">TZS 30,000<small>per jar</small></div><button class="prod-add" onclick="order('Coffee Exfoliating Scrub')">+</button></div>
+        </div>
+      </div>
+      <div class="prod-card vis" data-cat="scrub">
+        <div class="prod-vis po">🌾</div>
+        <div class="prod-body">
+          <div class="prod-cat">Glow Scrub</div>
+          <div class="prod-name">Turmeric Glow Scrub</div>
+          <div class="prod-desc">Natural brightening, even skin tone, soft texture. Glow naturally from the inside out.</div>
+          <div class="prod-footer"><div class="prod-price">TZS 30,000<small>per jar</small></div><button class="prod-add" onclick="order('Turmeric Glow Scrub')">+</button></div>
+        </div>
+      </div>
+      <div class="prod-card vis" data-cat="oil">
+        <div class="prod-vis pa">✨</div>
+        <div class="prod-badge g">Luxury</div>
+        <div class="prod-body">
+          <div class="prod-cat">Body Oil</div>
+          <div class="prod-name">Golden Glow Body Oil</div>
+          <div class="prod-desc">Moisturizes, hydrates, leaves skin refreshed and radiant. Pure luxury in a bottle.</div>
+          <div class="prod-footer"><div class="prod-price">TZS 70,000<small>per bottle</small></div><button class="prod-add" onclick="order('Golden Glow Body Oil')">+</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE 2 -->
+<svg class="wave" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" style="background:var(--forest);margin-bottom:-1px">
+  <path d="M0,40 C360,0 720,80 1080,40 C1260,20 1380,60 1440,40 L1440,0 L0,0 Z" fill="var(--cream)"/>
+</svg>
+
+<!-- INGREDIENTS -->
+<section class="ingredients" id="ingredients">
+  <div class="ingredients-inner">
+    <div class="ing-hd">
+      <div class="sec-label centered reveal">What's Inside</div>
+      <h2 class="sec-title reveal d1" style="text-align:center">The Secret Is in the<br><em>Ingredients</em></h2>
+      <p class="sec-body reveal d2" style="max-width:560px;margin:0 auto;text-align:center">Natural ingredients trusted by African communities for generations, now formulated into modern skincare that genuinely delivers results.</p>
+    </div>
+    <div class="ing-grid">
+      <div class="ing-card reveal d1"><div class="ing-inner"><span class="ing-emoji">🌟</span><div class="ing-name">Turmeric</div><p class="ing-ben">Brightens, evens tone, reduces dark spots. Curcumin's anti-inflammatory power gives skin a warm, natural glow without side effects.</p><div class="ing-found">Turmeric Soap · Glow Scrub</div></div></div>
+      <div class="ing-card reveal d2"><div class="ing-inner"><span class="ing-emoji">🍯</span><div class="ing-name">Honey</div><p class="ing-ben">Moisturizes, heals, soothes. Packed with antioxidants and natural humectants that draw moisture into the skin for a fresh, dewy complexion.</p><div class="ing-found">Lemon & Honey · Turmeric & Honey</div></div></div>
+      <div class="ing-card reveal d3"><div class="ing-inner"><span class="ing-emoji">🌰</span><div class="ing-name">Shea Butter</div><p class="ing-ben">Deep hydration, softens, protects. Rich in fatty acids and vitamins A, E, and F — one of the most powerful natural moisturizers on earth.</p><div class="ing-found">Luxury Shea Butter Soap</div></div></div>
+      <div class="ing-card reveal d1"><div class="ing-inner"><span class="ing-emoji">☕</span><div class="ing-name">Coffee</div><p class="ing-ben">Exfoliates, reduces puffiness, smooths. Real coffee grounds lift dead skin cells, improve circulation, and tighten skin in one powerful use.</p><div class="ing-found">Coffee Exfoliating Scrub</div></div></div>
+      <div class="ing-card reveal d2"><div class="ing-inner"><span class="ing-emoji">🍋</span><div class="ing-name">Lemon</div><p class="ing-ben">Natural brightening, oil control. Rich in Vitamin C and citric acid — brightens complexion, controls excess oil, and fades dark spots naturally.</p><div class="ing-found">Lemon & Honey Soap</div></div></div>
+      <div class="ing-card reveal d3"><div class="ing-inner"><span class="ing-emoji">🌿</span><div class="ing-name">Natural Oils</div><p class="ing-ben">Nourish, protect, refresh. Premium oil blends chosen for their ability to nourish the skin barrier and leave a healthy, natural, lasting finish.</p><div class="ing-found">Golden Glow Body Oil · All Products</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section class="offers" id="offers">
+  <div class="offers-inner">
+    <div class="reveal">
+      <div class="sec-label">Special Deals</div>
+      <h2 class="sec-title">Best Value<br><em>Bundles</em></h2>
+      <p class="sec-body">Give your skin a full natural routine without breaking your budget. Our bundles pair products that work beautifully together.</p>
+    </div>
+    <div class="offer-cards reveal d2">
+      <div class="offer-card">
+        <div><div class="offer-lbl">Buy Any 3 Soaps</div><div class="offer-sublbl">Mix & match your favourites</div></div>
+        <div class="offer-price">TZS 14,000<small>Bundle price</small></div>
+      </div>
+      <div class="offer-card">
+        <div><div class="offer-lbl">Special Soap Bundle</div><div class="offer-sublbl">Curated glow combination</div></div>
+        <div class="offer-price">TZS 22,000<small>Bundle price</small></div>
+      </div>
+      <div class="offer-ws">
+        <div class="offer-ws-text">Wholesale & Bulk Orders</div>
+        <a href="https://wa.me/255798538366" class="offer-ws-cta" target="_blank">Contact Us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-inner">
+    <div class="test-hd">
+      <div class="sec-label centered reveal" style="color:rgba(196,136,74,.72)">Community Love</div>
+      <h2 class="sec-title reveal d1" style="text-align:center;color:var(--cream)">What Our Customers<br><em style="color:var(--gold-light)">Are Saying</em></h2>
+    </div>
+    <div class="test-slider reveal">
+      <div class="test-track" id="ttrack">
+        <div class="test-card"><div class="test-stars">⭐⭐⭐⭐⭐</div><p class="test-text">"Finally a soap that actually works on my skin without causing dryness. The turmeric soap has genuinely transformed my complexion — I'm glowing every day."</p><div class="test-author">Amina M.</div><div class="test-loc">Dar es Salaam, Tanzania</div></div>
+        <div class="test-card"><div class="test-stars">⭐⭐⭐⭐⭐</div><p class="test-text">"I ordered from the UK and was amazed by the quality. Natural, effective, and smells absolutely divine. The coffee scrub is now a permanent part of my routine."</p><div class="test-author">Priya K.</div><div class="test-loc">London, United Kingdom</div></div>
+        <div class="test-card"><div class="test-stars">⭐⭐⭐⭐⭐</div><p class="test-text">"The Shea Butter Soap is incredible for dry skin. I've tried many African skincare products and this one stands out — pure, honest, and genuinely effective."</p><div class="test-author">Zawadi N.</div><div class="test-loc">Nairobi, Kenya</div></div>
+      </div>
+    </div>
+    <div class="slider-dots" id="sdots">
+      <button class="sdot active" onclick="slide(0)"></button>
+      <button class="sdot" onclick="slide(1)"></button>
+      <button class="sdot" onclick="slide(2)"></button>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section class="delivery" id="delivery">
+  <div class="delivery-inner">
+    <div class="del-hd">
+      <div class="sec-label centered reveal">Delivery & Shipping</div>
+      <h2 class="sec-title reveal d1" style="text-align:center">We Bring Zanzibar's Finest<br><em>to Your Doorstep</em></h2>
+    </div>
+    <div class="del-grid">
+      <div class="del-card reveal d1"><div class="del-icon">📍</div><div class="del-title">Local Delivery</div><p class="del-desc">Based in Tanzania? We offer fast, reliable local delivery to your home or business within Dar es Salaam.</p></div>
+      <div class="del-card reveal d2"><div class="del-icon">🌍</div><div class="del-title">Worldwide Shipping</div><p class="del-desc">Great skincare knows no borders. We ship to any country in the world. Contact us for shipping rates to your destination.</p></div>
+      <div class="del-card reveal d3"><div class="del-icon">📦</div><div class="del-title">Wholesale Orders</div><p class="del-desc">Retailers, spas, and distributors welcome. Competitive bulk pricing and consistent quality supply — locally and internationally.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram">
+  <div class="instagram-inner reveal">
+    <div class="ig-left">
+      <div class="ig-handle">@zanzibarsoap</div>
+      <p class="ig-stat">Join <strong>1,415+</strong> skincare lovers on Instagram. Daily tips, product updates, and the beauty of natural skincare from Zanzibar.</p>
+      <a href="https://instagram.com/zanzibarsoap" target="_blank" class="btn-primary" style="font-size:.8rem">Follow Us on Instagram</a>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-box pa" style="border-radius:12px">🧼</div>
+      <div class="ig-box pg" style="border-radius:12px">🌿</div>
+      <div class="ig-box py" style="border-radius:12px">🍯</div>
+      <div class="ig-box pb" style="border-radius:12px">☕</div>
+      <div class="ig-box pr" style="border-radius:12px">✨</div>
+      <div class="ig-box po" style="border-radius:12px">🌾</div>
+      <div class="ig-box pbl" style="border-radius:12px">💧</div>
+      <div class="ig-box pd" style="border-radius:12px">🌺</div>
+      <div class="ig-box pa" style="border-radius:12px">🌟</div>
+      <div class="ig-box pg" style="border-radius:12px">🍃</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="cta" id="contact">
+  <div class="blob" style="width:700px;height:700px;background:rgba(143,174,139,.05);top:-300px;left:-220px;animation-duration:22s"></div>
+  <div class="blob" style="width:500px;height:500px;background:rgba(196,136,74,.04);bottom:-200px;right:-120px;animation-duration:18s"></div>
+  <div class="cta-inner">
+    <div class="sec-label centered reveal" style="color:rgba(196,136,74,.72)">Get in Touch</div>
+    <h2 class="cta-title reveal d1">Ready to Glow?<br><em>We'd Love to Help.</em></h2>
+    <p class="cta-sub reveal d2">Whether you're ready to order, want to know more about our products, or are interested in wholesale — reach us through any channel below.</p>
+    <div class="cta-contacts reveal d3">
+      <div class="cta-ci"><span class="cta-lbl">📞 Call / WhatsApp</span><span class="cta-val">0798 538 366</span><span class="cta-val">+255 62 123 4567</span></div>
+      <div class="cta-ci"><span class="cta-lbl">📧 Email</span><span class="cta-val">zanzibarsoap@gmail.com</span></div>
+      <div class="cta-ci"><span class="cta-lbl">📍 Location</span><span class="cta-val">Dar es Salaam, Tanzania</span></div>
+    </div>
+    <div class="cta-btns reveal d4">
+      <a href="https://wa.me/255798538366" class="btn-wa" target="_blank"><span>💬</span>Order on WhatsApp</a>
+      <a href="mailto:zanzibarsoap@gmail.com" class="btn-primary">Send an Email</a>
+      <a href="https://instagram.com/zanzibarsoap" class="btn-ghost" target="_blank">@zanzibarsoap</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <div class="ft-logo">Zanzibar<span>.</span>Soap</div>
+      <p class="ft-tag">Natural, effective, and proudly African skincare, delivered with love from Zanzibar to the world.</p>
+      <div class="ft-socials">
+        <a href="https://instagram.com/zanzibarsoap" class="ft-si" target="_blank">📱</a>
+        <a href="https://wa.me/255798538366" class="ft-si" target="_blank">💬</a>
+        <a href="mailto:zanzibarsoap@gmail.com" class="ft-si" target="_blank">📧</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-title">Products</div>
+      <ul class="ft-links">
+        <li><a href="#products">Bar Soaps</a></li>
+        <li><a href="#products">Scrubs</a></li>
+        <li><a href="#products">Body Oils</a></li>
+        <li><a href="#offers">Bundle Deals</a></li>
+        <li><a href="#contact">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title">Company</div>
+      <ul class="ft-links">
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#ingredients">Ingredients</a></li>
+        <li><a href="#values">Our Values</a></li>
+        <li><a href="#delivery">Delivery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title">Contact</div>
+      <ul class="ft-links">
+        <li><a href="tel:+255798538366">0798 538 366</a></li>
+        <li><a href="tel:+255621234567">+255 62 123 4567</a></li>
+        <li><a href="mailto:zanzibarsoap@gmail.com">zanzibarsoap@gmail.com</a></li>
+        <li><a href="#">Dar es Salaam, Tanzania</a></li>
+        <li><a href="https://instagram.com/zanzibarsoap" target="_blank">@zanzibarsoap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <div class="ft-copy">© 2025 Zanzibar Soap Limited. All Rights Reserved.</div>
+    <div class="ft-seo">Zanzibar Soap Limited is a Tanzanian natural skincare company manufacturing 100% natural soaps, scrubs, and body oils made with turmeric, honey, shea butter, coffee, lemon, and essential oils. Ships worldwide from Tanzania.</div>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cursor'),cf=document.getElementById('cf');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function anim(){fx+=(mx-fx)*.12;fy+=(my-fy)*.12;cf.style.left=fx+'px';cf.style.top=fy+'px';requestAnimationFrame(anim)})();
+document.querySelectorAll('a,button,.prod-card,.val-card,.ing-card,.del-card').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hov'));el.addEventListener('mouseleave',()=>cur.classList.remove('hov'))});
+
+// NAV
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+
+// PARTICLES
+(function(){
+  const c=document.getElementById('particles');
+  const cols=['rgba(196,136,74,1)','rgba(143,174,139,1)','rgba(247,237,216,1)'];
+  for(let i=0;i<22;i++){
+    const p=document.createElement('div');p.className='particle';
+    const s=Math.random()*55+18;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${cols[~~(Math.random()*3)]};animation-duration:${Math.random()*18+14}s;animation-delay:${Math.random()*14}s`;
+    c.appendChild(p);
+  }
+})();
+
+// REVEAL
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// PRODUCT FILTER
+function filterP(cat,btn){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  document.querySelectorAll('.prod-card').forEach(c=>{const m=cat==='all'||c.dataset.cat===cat;c.classList.toggle('vis',m);if(!m)c.style.display='none'});
+}
+
+// ORDER
+function order(name){window.open(`https://wa.me/255798538366?text=${encodeURIComponent('Hello! I would like to order: '+name)}`,'_blank')}
+
+// TESTIMONIALS
+let cs=0;
+const tt=document.getElementById('ttrack'),dots=document.querySelectorAll('.sdot');
+function slide(n){cs=n;tt.style.transform=`translateX(-${n*100}%)`;dots.forEach((d,i)=>d.classList.toggle('active',i===n))}
+setInterval(()=>slide((cs+1)%3),5000);
+
+// PARALLAX HERO
+window.addEventListener('scroll',()=>{const hc=document.querySelector('.hero-content');if(hc&&scrollY<innerHeight){hc.style.transform=`translateY(${scrollY*.28}px)`;hc.style.opacity=Math.max(0,1-(scrollY/(innerHeight*.75)))}});
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}));
+</script>
+</body>
+</html>
