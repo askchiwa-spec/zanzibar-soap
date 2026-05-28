@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zanzibar Soap Limited — Staff Training Program | Mpango wa Mafunzo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --forest:#1B3A2D;--forest-deep:#0F2218;--forest-mid:#2D5A42;
+  --cream:#F7EDD8;--cream-deep:#EDD9B5;--gold:#C4884A;--gold-light:#E8B06A;
+  --sage:#8FAE8B;--white:#FFFDF8;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',sans-serif;
+}
+body{font-family:var(--sans);background:var(--white);color:#1a1a1a;line-height:1.7}
+
+/* ── COVER PAGE ── */
+.cover{
+  min-height:100vh;background:var(--forest-deep);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;
+  position:relative;overflow:hidden;
+}
+.cover::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 40%,rgba(196,136,74,.12) 0%,transparent 60%),
+             radial-gradient(ellipse at 70% 70%,rgba(143,174,139,.08) 0%,transparent 50%);
+}
+.cover-logo{font-family:var(--serif);font-size:1rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:3rem;opacity:.8}
+.cover-title{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5rem);font-weight:600;color:var(--cream);line-height:1.1;margin-bottom:.5rem}
+.cover-title em{color:var(--gold);font-style:italic}
+.cover-subtitle{font-family:var(--serif);font-size:clamp(1.2rem,3vw,2rem);color:var(--sage);font-style:italic;margin-bottom:2.5rem}
+.cover-divider{width:80px;height:1px;background:var(--gold);margin:0 auto 2rem}
+.cover-tagline{font-size:.85rem;color:rgba(247,237,216,.5);letter-spacing:.12em;text-transform:uppercase}
+.cover-year{position:absolute;bottom:2rem;font-size:.72rem;color:rgba(247,237,216,.25);letter-spacing:.15em;text-transform:uppercase}
+
+/* ── LAYOUT ── */
+.page{max-width:860px;margin:0 auto;padding:5rem 3rem}
+.page + .page{padding-top:0}
+
+/* ── SECTION HEADERS ── */
+.sec-tag{
+  display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);background:rgba(196,136,74,.1);border:1px solid rgba(196,136,74,.25);
+  padding:.25rem .8rem;border-radius:50px;margin-bottom:1rem;
+}
+.sec-heading{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--forest);line-height:1.15;margin-bottom:.5rem}
+.sec-heading em{color:var(--gold);font-style:italic}
+.sec-sub{font-size:.95rem;color:#555;max-width:600px;margin-bottom:2.5rem}
+.divider{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:3rem 0;opacity:.35}
+
+/* ── BILINGUAL BLOCK ── */
+.bilingual{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem}
+.lang-block{background:var(--cream);border-radius:16px;padding:2rem;border-left:3px solid var(--gold)}
+.lang-block.sw{border-color:var(--sage)}
+.lang-tag{font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.lang-block.sw .lang-tag{color:var(--sage)}
+.lang-block p{font-size:.9rem;color:#333;line-height:1.75}
+
+/* ── PRODUCT CATEGORY ── */
+.cat-section{margin-bottom:3rem}
+.cat-header{
+  display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:.75rem;
+  border-bottom:2px solid var(--cream-deep);
+}
+.cat-icon{font-size:1.6rem}
+.cat-title{font-family:var(--serif);font-size:1.5rem;color:var(--forest);font-weight:600}
+.cat-count{font-size:.7rem;color:var(--gold);background:rgba(196,136,74,.12);padding:.2rem .6rem;border-radius:50px;font-weight:500;letter-spacing:.05em}
+
+/* ── PRODUCT CARD ── */
+.product-list{display:flex;flex-direction:column;gap:1rem}
+.product-item{
+  background:var(--white);border:1px solid var(--cream-deep);border-radius:14px;
+  padding:1.2rem 1.5rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;
+  transition:box-shadow .2s;
+}
+.product-item:hover{box-shadow:0 4px 24px rgba(27,58,45,.08)}
+.prod-name-tr{font-weight:600;color:var(--forest);font-size:.95rem;margin-bottom:.2rem}
+.prod-benefits{font-size:.82rem;color:#555;line-height:1.6}
+.prod-benefits li{list-style:none;padding-left:1rem;position:relative}
+.prod-benefits li::before{content:'✓';position:absolute;left:0;color:var(--sage);font-size:.75rem;top:.05rem}
+.prod-meta{text-align:right;flex-shrink:0}
+.prod-badge-tr{
+  display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:.2rem .6rem;border-radius:50px;white-space:nowrap;
+}
+.badge-soap{background:rgba(27,58,45,.1);color:var(--forest)}
+.badge-wash{background:rgba(100,149,237,.12);color:#3a6abf}
+.badge-scrub{background:rgba(139,94,60,.1);color:#7a4a20}
+.badge-oil{background:rgba(196,136,74,.12);color:#9a6030}
+.badge-balm{background:rgba(200,100,150,.1);color:#a04070}
+.prod-note{font-size:.7rem;color:#999;margin-top:.3rem}
+
+/* ── SIZE TABLE ── */
+.size-table{width:100%;border-collapse:collapse;margin-top:.75rem;font-size:.82rem}
+.size-table th{background:var(--forest);color:var(--cream);padding:.5rem .75rem;text-align:left;font-weight:500;font-size:.7rem;letter-spacing:.06em}
+.size-table td{padding:.5rem .75rem;border-bottom:1px solid var(--cream-deep);color:#444}
+.size-table tr:last-child td{border-bottom:none}
+
+/* ── INFO CARDS ── */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+.info-card{
+  background:var(--cream);border-radius:14px;padding:1.5rem;text-align:center;
+  border-top:3px solid var(--gold);
+}
+.info-card .ic-icon{font-size:2rem;margin-bottom:.5rem}
+.info-card .ic-title{font-family:var(--serif);font-size:1.1rem;color:var(--forest);font-weight:600;margin-bottom:.35rem}
+.info-card .ic-body{font-size:.8rem;color:#555;line-height:1.6}
+
+/* ── RULE LIST ── */
+.rule-list{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem}
+.rule-item{
+  display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;
+  background:var(--white);border:1px solid var(--cream-deep);border-radius:10px;
+}
+.rule-item .ri-icon{font-size:1.1rem;flex-shrink:0;margin-top:.05rem}
+.rule-item .ri-text{font-size:.87rem;color:#333;line-height:1.5}
+.rule-item .ri-text strong{color:var(--forest)}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box{
+  background:var(--forest);border-radius:20px;padding:2.5rem;color:var(--cream);
+  text-align:center;margin:2.5rem 0;
+}
+.highlight-box .hb-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:1rem}
+.highlight-box .hb-quote{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,2rem);font-style:italic;line-height:1.4;color:var(--cream)}
+.highlight-box .hb-quote em{color:var(--gold)}
+.highlight-box .hb-attr{font-size:.75rem;color:rgba(247,237,216,.45);margin-top:1rem;letter-spacing:.1em}
+
+/* ── INGREDIENTS GRID ── */
+.ing-grid-tr{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:2rem}
+.ing-card-tr{
+  background:var(--cream);border-radius:12px;padding:1.2rem;text-align:center;
+}
+.ing-card-tr .ig-icon{font-size:1.8rem;margin-bottom:.4rem}
+.ing-card-tr .ig-name{font-weight:600;font-size:.85rem;color:var(--forest);margin-bottom:.25rem}
+.ing-card-tr .ig-desc{font-size:.72rem;color:#666;line-height:1.5}
+
+/* ── PAGE BREAK ── */
+.page-break{page-break-before:always;break-before:page}
+
+/* ── PRINT ── */
+@media print{
+  .cover{page-break-after:always}
+  nav,.no-print{display:none}
+  body{font-size:11pt}
+}
+@media (max-width:640px){
+  .page{padding:3rem 1.5rem}
+  .bilingual{grid-template-columns:1fr}
+  .ing-grid-tr{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     COVER PAGE
+══════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-logo">Zanzibar Soap Limited</div>
+  <h1 class="cover-title">Staff Training<br><em>Program</em></h1>
+  <p class="cover-subtitle">Mpango wa Mafunzo kwa Wafanyakazi</p>
+  <div class="cover-divider"></div>
+  <p class="cover-tagline">Quality · Cleanliness · Honesty · Customer Care</p>
+  <p class="cover-year">2025 Edition — Confidential</p>
+</div>
+
+<!-- ══════════════════════════════════════
+     ABOUT THE COMPANY
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-tag">Introduction / Utangulizi</div>
+  <h2 class="sec-heading">About <em>Zanzibar Soap</em></h2>
+  <p class="sec-sub">Read both the English and Kiswahili sections to fully understand our company mission and values.</p>
+
+  <div class="bilingual">
+    <div class="lang-block">
+      <div class="lang-tag">English</div>
+      <p>Zanzibar Soap Limited is a Tanzanian skincare company specializing in natural soaps and personal care products — including beauty soaps, scrubs, body oils, body wash, hand wash, body balm, and daily skincare essentials.</p>
+      <br>
+      <p>We combine natural ingredients with modern production standards to create high-quality products inspired by the beauty and heritage of Zanzibar and Africa. Our focus is providing cleanliness, freshness, skin care, and a luxurious experience using carefully selected ingredients such as turmeric, honey, shea butter, coffee, and natural oils.</p>
+      <br>
+      <p>We serve both local and export markets while building a trusted African skincare brand.</p>
+    </div>
+    <div class="lang-block sw">
+      <div class="lang-tag">Kiswahili</div>
+      <p>Zanzibar Soap Limited ni kampuni ya Kitanzania inayojishughulisha na utengenezaji wa sabuni za asili na bidhaa za utunzaji wa ngozi — ikiwemo sabuni za urembo, scrub, mafuta ya mwili, body wash, hand wash, body balm, na bidhaa za matumizi ya kila siku.</p>
+      <br>
+      <p>Kampuni inachanganya viambato vya asili na viwango vya kisasa vya uzalishaji ili kutoa bidhaa bora zilizo inspired na uzuri wa Zanzibar na Afrika. Tunalenga kutoa usafi, harufu nzuri, utunzaji wa ngozi, na hisia ya ubora kwa kutumia viambato kama turmeric, asali, shea butter, kahawa, na mafuta ya asili.</p>
+      <br>
+      <p>Kampuni inahudumia soko la ndani na la kimataifa huku ikijenga chapa ya kiafrika yenye kuaminika katika bidhaa za ngozi.</p>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-icon">🌿</div>
+      <div class="ic-title">100% Natural</div>
+      <div class="ic-body">All products use carefully selected natural ingredients with no harmful chemicals.</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🏺</div>
+      <div class="ic-title">Handcrafted</div>
+      <div class="ic-body">Every product is made with intention, care, and modern production standards.</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🌍</div>
+      <div class="ic-title">Proudly African</div>
+      <div class="ic-body">Inspired by African heritage, serving local and international markets worldwide.</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🤝</div>
+      <div class="ic-title">Community First</div>
+      <div class="ic-body">We uplift local communities through honest business and fair practices.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sec-tag">Key Ingredients / Viambato Vikuu</div>
+  <h2 class="sec-heading">Our <em>Natural Ingredients</em></h2>
+  <p class="sec-sub">These are the core ingredients behind our products. Know them well — customers will ask.</p>
+
+  <div class="ing-grid-tr">
+    <div class="ing-card-tr">
+      <div class="ig-icon">🌿</div>
+      <div class="ig-name">Turmeric / Manjano</div>
+      <div class="ig-desc">Brightens skin, reduces dark spots, natural anti-inflammatory properties.</div>
+    </div>
+    <div class="ing-card-tr">
+      <div class="ig-icon">🍯</div>
+      <div class="ig-name">Honey / Asali</div>
+      <div class="ig-desc">Deep hydration, antibacterial, soothes and softens all skin types.</div>
+    </div>
+    <div class="ing-card-tr">
+      <div class="ig-icon">🥜</div>
+      <div class="ig-name">Shea Butter / Siagi ya Shea</div>
+      <div class="ig-desc">Africa's finest moisturizer. Deeply nourishes and protects dry skin.</div>
+    </div>
+    <div class="ing-card-tr">
+      <div class="ig-icon">☕</div>
+      <div class="ig-name">Coffee / Kahawa</div>
+      <div class="ig-desc">Exfoliates dead skin, improves texture, reduces blemishes.</div>
+    </div>
+    <div class="ing-card-tr">
+      <div class="ig-icon">🍋</div>
+      <div class="ig-name">Lemon / Limao</div>
+      <div class="ig-desc">Natural brightening, helps even skin tone, refreshing cleanse.</div>
+    </div>
+    <div class="ing-card-tr">
+      <div class="ig-icon">🌺</div>
+      <div class="ig-name">Kojic Acid / Asidi ya Kojic</div>
+      <div class="ig-desc">Visibly lightens dark spots and evens complexion safely and naturally.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PRODUCT CATALOG
+══════════════════════════════════════ -->
+<div class="page page-break">
+  <div class="sec-tag">Product Catalog / Orodha ya Bidhaa</div>
+  <h2 class="sec-heading">Our Complete<br><em>Product Range</em></h2>
+  <p class="sec-sub">Learn every product, its category, and key benefits so you can confidently guide customers to the right choice.</p>
+
+  <!-- BAR SOAPS -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <span class="cat-icon">🧼</span>
+      <span class="cat-title">Bar Soaps / Sabuni za Mwili</span>
+      <span class="cat-count">6 Products</span>
+    </div>
+    <div class="product-list">
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Luxury Shea Butter Soap</div>
+          <ul class="prod-benefits">
+            <li>Deep moisturizing for dry skin</li>
+            <li>Long-lasting softness from Africa's finest shea butter</li>
+            <li>Gentle enough for daily use</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-soap">Best Seller</span>
+          <div class="prod-note">TZS 5,000 / bar</div>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Lemon &amp; Honey Soap</div>
+          <ul class="prod-benefits">
+            <li>Natural skin brightening</li>
+            <li>Helps even out skin tone</li>
+            <li>Silky, refreshing lather</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-soap">Bar Soap</span>
+          <div class="prod-note">TZS 5,000 / bar</div>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Turmeric &amp; Honey Soap</div>
+          <ul class="prod-benefits">
+            <li>Reduces dark spots and uneven tone</li>
+            <li>Deep hydration with natural honey</li>
+            <li>Promotes a natural glow</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-soap">Glow Special</span>
+          <div class="prod-note">TZS 5,000 / bar</div>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Kojic Glow Soap</div>
+          <ul class="prod-benefits">
+            <li>Kojic acid visibly lightens dark spots</li>
+            <li>Evens skin tone with consistent use</li>
+            <li>Natural formula, safe for daily use</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-soap">Glow Formula</span>
+          <div class="prod-note">TZS 5,000 / bar</div>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Nuru Soap</div>
+          <ul class="prod-benefits">
+            <li>Fights acne and pimples</li>
+            <li>Deep cleansing for oily skin</li>
+            <li>Herbal treatment for a clear complexion</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-soap">Herbal</span>
+          <div class="prod-note">TZS 3,000 / bar</div>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Shea Butter Soap</div>
+          <ul class="prod-benefits">
+            <li>Pure shea butter for intensive nourishment</li>
+            <li>Ideal for very dry or sensitive skin</li>
+            <li>Leaves skin soft and protected</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-soap">Bar Soap</span>
+          <div class="prod-note">TZS 5,000 / bar</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BODY WASH -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <span class="cat-icon">🚿</span>
+      <span class="cat-title">Body Wash / Dawa ya Kuogea</span>
+      <span class="cat-count">4 Products</span>
+    </div>
+    <div class="product-list">
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Pink Velvet Body Wash</div>
+          <ul class="prod-benefits">
+            <li>Rich lather that cleanses gently</li>
+            <li>Leaves skin silky smooth</li>
+            <li>Delicate, lasting floral fragrance</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-wash">New</span>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Blue Wave Body Wash</div>
+          <ul class="prod-benefits">
+            <li>Refreshing deep-cleanse formula</li>
+            <li>Invigorates skin with every shower</li>
+            <li>A wave of freshness from head to toe</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-wash">Fresh</span>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Nazi Coconut Body Wash</div>
+          <ul class="prod-benefits">
+            <li>Coconut-enriched formula moisturizes as it cleanses</li>
+            <li>Tropical freshness and natural softness</li>
+            <li>Suitable for all skin types</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-wash">Tropical</span>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Radiant Turmeric Glow Body Wash</div>
+          <ul class="prod-benefits">
+            <li>Turmeric-powered brightening while cleansing</li>
+            <li>Promotes a natural glow from every shower</li>
+            <li>Deep yet gentle full-body cleanse</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-wash">Best Seller</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HAND WASH -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <span class="cat-icon">🤲</span>
+      <span class="cat-title">Hand Wash / Sabuni ya Mikono</span>
+      <span class="cat-count">1 Product · 2 Sizes</span>
+    </div>
+    <div class="product-list">
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Usafi Popote Hand Wash</div>
+          <ul class="prod-benefits">
+            <li>Gentle, effective hand hygiene wherever you are</li>
+            <li>Kills germs while keeping hands soft</li>
+            <li>Available in two sizes for every need</li>
+          </ul>
+          <table class="size-table" style="margin-top:.75rem">
+            <thead><tr><th>Size</th><th>Best For</th></tr></thead>
+            <tbody>
+              <tr><td><strong>60ml Portable</strong></td><td>Travel, office, daily carry — fits in any bag</td></tr>
+              <tr><td><strong>500ml Standard</strong></td><td>Restaurants, hotels, home bathrooms, workplaces</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-wash">2 Sizes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     BODY CARE & SCRUBS
+══════════════════════════════════════ -->
+<div class="page page-break">
+
+  <!-- BODY CARE -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <span class="cat-icon">✨</span>
+      <span class="cat-title">Body Care Line / Bidhaa za Mwili</span>
+      <span class="cat-count">4 Products</span>
+    </div>
+    <div class="product-list">
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Golden Glow Body Oil — 300ml &amp; 500ml</div>
+          <ul class="prod-benefits">
+            <li>Helps improve uneven skin appearance</li>
+            <li>Reduces the appearance of post-pregnancy marks</li>
+            <li>Soothes itching and dry skin</li>
+            <li>Available in 300ml and 500ml sizes</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-oil">Luxury</span>
+          <div class="prod-note">TZS 70,000 / bottle</div>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Velvet Green Body Oil</div>
+          <ul class="prod-benefits">
+            <li>Softens dry skin quickly</li>
+            <li>Maintains skin moisture throughout the day</li>
+            <li>Rich natural blend for lasting comfort</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-oil">Body Oil</span>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Velvet Glow Body Balm</div>
+          <ul class="prod-benefits">
+            <li>Deep moisturization for dry skin</li>
+            <li>Supports soft and smooth skin feeling</li>
+            <li>Ideal for elbows, knees, and dry areas</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-balm">Body Balm</span>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Golden Butter</div>
+          <ul class="prod-benefits">
+            <li>Lightens and brightens skin tone</li>
+            <li>Evens out complexion for a natural glow</li>
+            <li>Rich, luxurious buttery texture</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-balm">Brightening</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SCRUBS -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <span class="cat-icon">🌾</span>
+      <span class="cat-title">Scrubs / Dawa za Kusuugua</span>
+      <span class="cat-count">2 Products</span>
+    </div>
+    <div class="product-list">
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Coffee Exfoliating Scrub</div>
+          <ul class="prod-benefits">
+            <li>Removes dead skin cells effectively</li>
+            <li>Leaves skin feeling smooth and refreshed</li>
+            <li>Reduces facial blemishes and improves texture</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-scrub">Top Rated</span>
+          <div class="prod-note">TZS 30,000 / jar</div>
+        </div>
+      </div>
+
+      <div class="product-item">
+        <div>
+          <div class="prod-name-tr">Turmeric Scrub <span style="font-weight:400;font-size:.78rem;color:#888">(Available on customer request)</span></div>
+          <ul class="prod-benefits">
+            <li>Deeply cleanses skin</li>
+            <li>Leaves skin feeling refreshed and bright</li>
+            <li>Turmeric naturally brightens and evens tone</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-scrub">On Request</span>
+          <div class="prod-note">TZS 30,000 / jar</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HOTEL SOAPS -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <span class="cat-icon">🏨</span>
+      <span class="cat-title">Hotel Soaps / Sabuni za Hoteli</span>
+      <span class="cat-count">B2B / Wholesale</span>
+    </div>
+    <div class="product-list">
+      <div class="product-item" style="background:var(--cream)">
+        <div>
+          <div class="prod-name-tr">Hotel Soap Collection</div>
+          <ul class="prod-benefits">
+            <li>Custom branded soaps for hotels and lodges</li>
+            <li>Available in bulk wholesale quantities</li>
+            <li>Natural ingredients — safe for all guests</li>
+            <li>Custom packaging and branding available</li>
+          </ul>
+        </div>
+        <div class="prod-meta">
+          <span class="prod-badge-tr badge-soap">Wholesale</span>
+          <div class="prod-note">Contact for pricing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hb-label">Product Knowledge Tip / Ushauri wa Bidhaa</div>
+    <p class="hb-quote">"When a customer asks which product is right for them, ask about their <em>skin concern first</em> — then recommend the product that matches. Never push the most expensive option."</p>
+    <p class="hb-attr">— Zanzibar Soap Customer Service Philosophy</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CUSTOMER SERVICE & CONDUCT
+══════════════════════════════════════ -->
+<div class="page page-break">
+  <div class="sec-tag">Staff Conduct / Mwenendo wa Wafanyakazi</div>
+  <h2 class="sec-heading">Customer Service<br><em>Standards</em></h2>
+  <p class="sec-sub">How we treat customers reflects who we are as a brand. Every interaction is an opportunity to build trust.</p>
+
+  <div class="rule-list">
+    <div class="rule-item">
+      <span class="ri-icon">🤝</span>
+      <div class="ri-text"><strong>Respect every customer</strong> — Greet warmly, listen carefully, and treat all customers with equal dignity regardless of how much they buy.</div>
+    </div>
+    <div class="rule-item">
+      <span class="ri-icon">🗣️</span>
+      <div class="ri-text"><strong>Explain products clearly</strong> — Use simple language. Describe what a product does and which skin concern it addresses. Offer to show ingredients if asked.</div>
+    </div>
+    <div class="rule-item">
+      <span class="ri-icon">🚫</span>
+      <div class="ri-text"><strong>Do not exaggerate product benefits</strong> — Be honest. We say "helps brighten skin" — not "will make you completely white." Trust is built through honesty, not promises.</div>
+    </div>
+    <div class="rule-item">
+      <span class="ri-icon">📦</span>
+      <div class="ri-text"><strong>Know your stock</strong> — Be aware of which products are available so you never promise something out of stock. Direct customers to alternatives confidently.</div>
+    </div>
+    <div class="rule-item">
+      <span class="ri-icon">📱</span>
+      <div class="ri-text"><strong>WhatsApp orders</strong> — For online orders, direct customers to WhatsApp: <strong>+255 798 538 366</strong>. Confirm product name, size, and delivery address.</div>
+    </div>
+    <div class="rule-item">
+      <span class="ri-icon">🎁</span>
+      <div class="ri-text"><strong>Wholesale inquiries</strong> — Refer hotels, shops, or bulk buyers to the manager. We offer special rates for wholesale and hotel orders.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sec-tag">Hygiene &amp; Safety / Usafi na Usalama</div>
+  <h2 class="sec-heading">Hygiene &amp; <em>Safety Rules</em></h2>
+  <p class="sec-sub">We sell cleanliness. We must model cleanliness. These rules are non-negotiable.</p>
+
+  <div class="rule-list">
+    <div class="rule-item">
+      <span class="ri-icon">🧼</span>
+      <div class="ri-text"><strong>Wash hands before handling any product</strong> — This applies every time, without exception. Dirty hands contaminate products and damage our reputation.</div>
+    </div>
+    <div class="rule-item">
+      <span class="ri-icon">🧹</span>
+      <div class="ri-text"><strong>Keep products away from dirt and dust</strong> — Store products in clean, dry areas. Wipe display surfaces daily. Never place products on the ground.</div>
+    </div>
+    <div class="rule-item">
+      <span class="ri-icon">👕</span>
+      <div class="ri-text"><strong>Wear clean clothes at all times</strong> — You represent the brand. Clean, neat appearance shows professionalism and respect for customers.</div>
+    </div>
+    <div class="rule-item">
+      <span class="ri-icon">🌡️</span>
+      <div class="ri-text"><strong>Store products correctly</strong> — Keep away from direct sunlight and extreme heat. Cool, dry storage preserves product quality and shelf life.</div>
+    </div>
+    <div class="rule-item">
+      <span class="ri-icon">📋</span>
+      <div class="ri-text"><strong>Check expiry and condition</strong> — Never sell a damaged, leaking, or expired product. Report any such items to the manager immediately.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- QUICK REFERENCE -->
+  <div class="sec-tag">Quick Reference / Muhtasari</div>
+  <h2 class="sec-heading">At a <em>Glance</em></h2>
+  <p class="sec-sub">A fast reference to keep with you on the floor.</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-icon">📞</div>
+      <div class="ic-title">WhatsApp / Orders</div>
+      <div class="ic-body">+255 798 538 366<br>For all customer orders and inquiries</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">📍</div>
+      <div class="ic-title">Location</div>
+      <div class="ic-body">Kitomondo Street, Temeke<br>Dar es Salaam, Tanzania</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">⏰</div>
+      <div class="ic-title">Business Hours</div>
+      <div class="ic-body">Monday – Saturday<br>8:00 AM – 6:00 PM</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">✉️</div>
+      <div class="ic-title">Email</div>
+      <div class="ic-body">zanzibarsoap@gmail.com<br>For wholesale &amp; formal inquiries</div>
+    </div>
+  </div>
+
+  <!-- FINAL MESSAGE -->
+  <div class="highlight-box">
+    <div class="hb-label">Final Message / Ujumbe wa Mwisho</div>
+    <p class="hb-quote">At Zanzibar Soap, <em>quality, cleanliness, honesty, and customer care</em> are not just rules — they are who we are. Carry these values in every interaction, every day.</p>
+    <p class="hb-attr">— Zanzibar Soap Limited Management</p>
+  </div>
+
+  <div style="text-align:center;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--cream-deep)">
+    <div style="font-family:var(--serif);font-size:1.1rem;color:var(--forest);margin-bottom:.3rem">Zanzibar Soap Limited</div>
+    <div style="font-size:.72rem;color:#999;letter-spacing:.1em">Designed &amp; Built by <strong style="color:var(--gold)">Flowra Technology</strong> · 2025</div>
+  </div>
+</div>
+
+</body>
+</html>

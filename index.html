@@ -364,6 +364,15 @@ section{position:relative}
 .pc-brown .img-ph{background:linear-gradient(135deg,#eddfd0,#d9c0a0)}
 .pc-olive .img-ph{background:linear-gradient(135deg,#e5ecd5,#c8d4a0)}
 .pc-teal .img-ph{background:linear-gradient(135deg,#d5e8e0,#9ac5b5)}
+.pc-purple .img-ph{background:linear-gradient(135deg,#ecdff5,#cba8e8)}
+.pc-pink .img-ph{background:linear-gradient(135deg,#fde8f0,#f5a8c8)}
+.pc-navy .img-ph{background:linear-gradient(135deg,#d5e0f5,#a0b5e0)}
+.pc-ivory .img-ph{background:linear-gradient(135deg,#f8f4e8,#e8dfc0)}
+.pc-amber .img-ph{background:linear-gradient(135deg,#fdecd0,#f0c070)}
+.pc-lime .img-ph{background:linear-gradient(135deg,#e8f5d5,#c0e090)}
+.pc-jade .img-ph{background:linear-gradient(135deg,#d0ead8,#88c898)}
+.pc-blush .img-ph{background:linear-gradient(135deg,#f5e0e8,#e0a8b8)}
+.pc-gold .img-ph{background:linear-gradient(135deg,#fdf0d0,#e8c070)}
 
 /* ── PROCESS VIDEO ── */
 .process{padding:9rem 5rem;background:var(--forest-deep);overflow:hidden}
@@ -812,6 +821,9 @@ footer{background:var(--forest-deep);padding:5rem 5rem 2.5rem}
       <button class="tab" onclick="filterP('soap',this)">Soaps</button>
       <button class="tab" onclick="filterP('scrub',this)">Scrubs</button>
       <button class="tab" onclick="filterP('oil',this)">Body Oil</button>
+      <button class="tab" onclick="filterP('bodywash',this)">Body Wash</button>
+      <button class="tab" onclick="filterP('handwash',this)">Hand Wash</button>
+      <button class="tab" onclick="filterP('balm',this)">Body Balm</button>
     </div>
     <div class="prod-grid" id="pgrid">
 
@@ -964,10 +976,188 @@ footer{background:var(--forest-deep);padding:5rem 5rem 2.5rem}
         <div class="prod-body">
           <div class="prod-cat">Body Oil</div>
           <div class="prod-name">Golden Glow Body Oil</div>
-          <div class="prod-desc">Moisturizes, hydrates, leaves skin refreshed and radiant. Pure luxury in a bottle.</div>
+          <div class="prod-desc">Improves uneven skin appearance, reduces post-pregnancy marks, and soothes dry itching skin. Available in 300ml &amp; 500ml.</div>
           <div class="prod-footer">
             <div class="prod-price">TZS 70,000<small>per bottle</small></div>
             <button class="prod-add" onclick="order('Golden Glow Body Oil')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="prod-card pc-purple vis" data-cat="soap">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🌸</span><span class="ph-label">images/products/kojic-glow-soap.jpg</span></div>
+            <img src="images/products/kojic-glow-soap.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/ecdff5/6B2F9A?text=Kojic+Glow+Soap'" alt="Kojic Glow Soap" loading="lazy">
+          </div>
+          <div class="prod-badge">Glow Formula</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Bar Soap</div>
+          <div class="prod-name">Kojic Glow Soap</div>
+          <div class="prod-desc">Kojic-powered brightening formula that visibly evens skin tone and reduces dark spots. For a clearer, more radiant complexion.</div>
+          <div class="prod-footer">
+            <div class="prod-price">TZS 5,000<small>per bar</small></div>
+            <button class="prod-add" onclick="order('Kojic Glow Soap')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="prod-card pc-jade vis" data-cat="oil">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🌿</span><span class="ph-label">images/products/velvet-green-oil.jpg</span></div>
+            <img src="images/products/velvet-green-oil.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/d0ead8/1B3A2D?text=Velvet+Green+Body+Oil'" alt="Velvet Green Body Oil" loading="lazy">
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Body Oil</div>
+          <div class="prod-name">Velvet Green Body Oil</div>
+          <div class="prod-desc">Softens dry skin and maintains moisture all day long. A rich natural blend for lasting skin comfort and suppleness.</div>
+          <div class="prod-footer">
+            <div class="prod-price">Contact for price</div>
+            <button class="prod-add" onclick="order('Velvet Green Body Oil')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="prod-card pc-blush vis" data-cat="balm">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🫧</span><span class="ph-label">images/products/velvet-glow-balm.jpg</span></div>
+            <img src="images/products/velvet-glow-balm.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/f5e0e8/8B3060?text=Velvet+Glow+Body+Balm'" alt="Velvet Glow Body Balm" loading="lazy">
+          </div>
+          <div class="prod-badge">Softening</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Body Balm</div>
+          <div class="prod-name">Velvet Glow Body Balm</div>
+          <div class="prod-desc">Deep-moisturizing balm that supports soft, smooth skin. Ideal for dry areas needing intensive nourishment and care.</div>
+          <div class="prod-footer">
+            <div class="prod-price">Contact for price</div>
+            <button class="prod-add" onclick="order('Velvet Glow Body Balm')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="prod-card pc-gold vis" data-cat="balm">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🌟</span><span class="ph-label">images/products/golden-butter.jpg</span></div>
+            <img src="images/products/golden-butter.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/fdf0d0/8A5020?text=Golden+Butter'" alt="Golden Butter" loading="lazy">
+          </div>
+          <div class="prod-badge gold">Brightening</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Body Butter</div>
+          <div class="prod-name">Golden Butter</div>
+          <div class="prod-desc">A luxurious brightening butter that lightens and evens out skin tone. Naturally radiant, beautifully smooth.</div>
+          <div class="prod-footer">
+            <div class="prod-price">Contact for price</div>
+            <button class="prod-add" onclick="order('Golden Butter')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="prod-card pc-pink vis" data-cat="bodywash">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🌺</span><span class="ph-label">images/products/pink-velvet-wash.jpg</span></div>
+            <img src="images/products/pink-velvet-wash.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/fde8f0/A03060?text=Pink+Velvet+Body+Wash'" alt="Pink Velvet Body Wash" loading="lazy">
+          </div>
+          <div class="prod-badge">New</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Body Wash</div>
+          <div class="prod-name">Pink Velvet Body Wash</div>
+          <div class="prod-desc">A rich-lathering formula that cleanses gently while leaving skin silky smooth. Wrapped in a delicate, lasting floral fragrance.</div>
+          <div class="prod-footer">
+            <div class="prod-price">Contact for price</div>
+            <button class="prod-add" onclick="order('Pink Velvet Body Wash')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="prod-card pc-navy vis" data-cat="bodywash">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🌊</span><span class="ph-label">images/products/blue-wave-wash.jpg</span></div>
+            <img src="images/products/blue-wave-wash.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/d5e0f5/2A4A9A?text=Blue+Wave+Body+Wash'" alt="Blue Wave Body Wash" loading="lazy">
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Body Wash</div>
+          <div class="prod-name">Blue Wave Body Wash</div>
+          <div class="prod-desc">Refreshing deep-cleanse formula that invigorates skin with every shower. A powerful wave of freshness from head to toe.</div>
+          <div class="prod-footer">
+            <div class="prod-price">Contact for price</div>
+            <button class="prod-add" onclick="order('Blue Wave Body Wash')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15 -->
+      <div class="prod-card pc-ivory vis" data-cat="bodywash">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🥥</span><span class="ph-label">images/products/nazi-coconut-wash.jpg</span></div>
+            <img src="images/products/nazi-coconut-wash.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/f8f4e8/6A5020?text=Nazi+Coconut+Body+Wash'" alt="Nazi Coconut Body Wash" loading="lazy">
+          </div>
+          <div class="prod-badge">Tropical</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Body Wash</div>
+          <div class="prod-name">Nazi Coconut Body Wash</div>
+          <div class="prod-desc">Coconut-enriched formula that moisturizes as it cleanses. Tropical freshness and natural softness with every shower.</div>
+          <div class="prod-footer">
+            <div class="prod-price">Contact for price</div>
+            <button class="prod-add" onclick="order('Nazi Coconut Body Wash')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16 -->
+      <div class="prod-card pc-amber vis" data-cat="bodywash">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">✨</span><span class="ph-label">images/products/turmeric-glow-wash.jpg</span></div>
+            <img src="images/products/turmeric-glow-wash.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/fdecd0/AA5010?text=Radiant+Turmeric+Glow'" alt="Radiant Turmeric Glow Body Wash" loading="lazy">
+          </div>
+          <div class="prod-badge gold">Best Seller</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Body Wash</div>
+          <div class="prod-name">Radiant Turmeric Glow Body Wash</div>
+          <div class="prod-desc">Turmeric-powered body wash that brightens skin while deeply cleansing. Glow naturally from every shower.</div>
+          <div class="prod-footer">
+            <div class="prod-price">Contact for price</div>
+            <button class="prod-add" onclick="order('Radiant Turmeric Glow Body Wash')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17 -->
+      <div class="prod-card pc-lime vis" data-cat="handwash">
+        <div class="prod-img-wrap">
+          <div class="img-ph">
+            <div class="ph-inner"><span class="ph-icon">🤲</span><span class="ph-label">images/products/usafi-popote-handwash.jpg</span></div>
+            <img src="images/products/usafi-popote-handwash.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e8f5d5/386020?text=Usafi+Popote+Hand+Wash'" alt="Usafi Popote Hand Wash" loading="lazy">
+          </div>
+          <div class="prod-badge">2 Sizes</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Hand Wash</div>
+          <div class="prod-name">Usafi Popote Hand Wash</div>
+          <div class="prod-desc">Gentle, effective hand hygiene wherever you are. Available in 60ml portable (travel &amp; office) and 500ml (restaurants &amp; home).</div>
+          <div class="prod-footer">
+            <div class="prod-price">Contact for price</div>
+            <button class="prod-add" onclick="order('Usafi Popote Hand Wash')">+</button>
           </div>
         </div>
       </div>
@@ -1421,10 +1611,11 @@ footer{background:var(--forest-deep);padding:5rem 5rem 2.5rem}
       <div class="ft-col-title">Products</div>
       <ul class="ft-links">
         <li><a href="#products">Bar Soaps</a></li>
+        <li><a href="#products">Body Wash</a></li>
+        <li><a href="#products">Hand Wash</a></li>
         <li><a href="#products">Scrubs</a></li>
-        <li><a href="#products">Body Oils</a></li>
-        <li><a href="#offers">Bundle Deals</a></li>
-        <li><a href="#contact">Wholesale</a></li>
+        <li><a href="#products">Body Oils &amp; Balm</a></li>
+        <li><a href="#contact">Wholesale &amp; Hotel</a></li>
       </ul>
     </div>
     <div>
@@ -1451,7 +1642,7 @@ footer{background:var(--forest-deep);padding:5rem 5rem 2.5rem}
   </div>
   <div class="ft-bottom">
     <div class="ft-copy">© 2025 Zanzibar Soap Limited. All Rights Reserved.</div>
-    <div class="ft-seo">Zanzibar Soap Limited is a Tanzanian natural skincare company manufacturing 100% natural soaps, scrubs, and body oils made with turmeric, honey, shea butter, coffee, lemon, and essential oils. Ships worldwide from Tanzania.</div>
+    <div class="ft-seo">Zanzibar Soap Limited is a Tanzanian natural skincare company manufacturing 100% natural soaps, body wash, hand wash, scrubs, body oils, and body balms made with turmeric, honey, shea butter, coffee, lemon, kojic acid, and essential oils. Ships worldwide from Tanzania.</div>
   </div>
   <div class="ft-flowra">
     <span>Designed &amp; Built by</span>
